@@ -1,6 +1,8 @@
 ---
 import ProjectCard from "../ProjectCard.astro";
 
+const base = import.meta.env.BASE_URL;
+
 // Dashboard UI Mockups
 // To add your mockup images:
 // 1. Save your images in /public/images/ with the names: dashboard-1.png (or .jpg, .webp)
@@ -12,7 +14,7 @@ const projects = [
     description:
       "Modern analytics dashboard with real-time data visualization, interactive charts, and comprehensive reporting features for data-driven decision making.",
     techStack: ["React", "D3.js", "Tailwind", "TypeScript"],
-    imageUrl: "/images/dashboard-1.svg",
+    imageUrl: `${base}images/dashboard-1.svg`,
     projectUrl: "#",
   },
   {
@@ -20,7 +22,7 @@ const projects = [
     description:
       "Comprehensive admin interface with user management, system monitoring, and configuration controls featuring an intuitive skeuomorphic design.",
     techStack: ["Astro", "React", "Chart.js", "PostgreSQL"],
-    imageUrl: "/images/dashboard-2.svg",
+    imageUrl: `${base}images/dashboard-2.svg`,
     projectUrl: "#",
   },
   {
@@ -28,7 +30,7 @@ const projects = [
     description:
       "Collaborative workspace dashboard with task tracking, team collaboration tools, and project timeline visualization in a tactile interface.",
     techStack: ["TypeScript", "Next.js", "Prisma", "WebSocket"],
-    imageUrl: "/images/dashboard-3.svg",
+    imageUrl: `${base}images/dashboard-3.svg`,
     projectUrl: "#",
   },
   {
@@ -36,7 +38,7 @@ const projects = [
     description:
       "Real-time system monitoring interface with server metrics, performance analytics, and alert management featuring depth-rich visualizations.",
     techStack: ["React", "Node.js", "InfluxDB", "Grafana"],
-    imageUrl: "/images/dashboard-4.svg",
+    imageUrl: `${base}images/dashboard-4.svg`,
     projectUrl: "#",
   },
 ];

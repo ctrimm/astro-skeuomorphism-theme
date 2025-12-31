@@ -1,5 +1,7 @@
 ---
 import { NeuCard } from "../skeuomorphic/NeuCard";
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <section id="about" class="min-h-screen py-20 px-4 bg-gradient-to-b from-neubg to-neubg-light">
@@ -15,7 +17,7 @@ import { NeuCard } from "../skeuomorphic/NeuCard";
         <div class="relative">
           <div class="w-64 h-64 md:w-80 md:h-80 rounded-3xl shadow-skeuo-deep overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500 p-1">
             <img
-              src="/images/placeholder-profile.svg"
+              src={`${base}images/placeholder-profile.svg`}
               alt="Profile photo of Alex Morgan"
               class="w-full h-full rounded-3xl object-cover bg-neubg"
               loading="lazy"
