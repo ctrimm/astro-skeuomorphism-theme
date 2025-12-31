@@ -31,7 +31,6 @@ export const SkeuoCheckbox = ({
             ? "bg-gradient-to-br from-blue-400 to-blue-600 shadow-skeuo-raised"
             : "bg-neubg shadow-neu-inset"
         )}
-        onClick={handleToggle}
       >
         <input
           type="checkbox"
