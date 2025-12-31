@@ -1,13 +1,16 @@
 ---
 import ProjectCard from "../ProjectCard.astro";
 
+// TODO: Replace placeholder images with your actual project screenshots
+// Recommended image size: 800x400px (16:9 ratio)
+// Place your images in /public/images/ and update the imageUrl paths below
 const projects = [
   {
     title: "E-Commerce Platform",
     description:
       "A full-featured online shopping platform with real-time inventory management, secure payment processing, and an intuitive admin dashboard.",
     techStack: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    imageUrl: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=400&fit=crop",
+    imageUrl: "/images/placeholder-project.svg", // Replace with your project image
     projectUrl: "#",
   },
   {
@@ -15,7 +18,7 @@ const projects = [
     description:
       "Collaborative project management tool with real-time updates, drag-and-drop interface, and team collaboration features.",
     techStack: ["TypeScript", "Next.js", "Prisma", "WebSocket"],
-    imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=400&fit=crop",
+    imageUrl: "/images/placeholder-project.svg", // Replace with your project image
     projectUrl: "#",
   },
   {
@@ -23,7 +26,7 @@ const projects = [
     description:
       "Comprehensive component library with accessibility-first design, extensive documentation, and customizable theming system.",
     techStack: ["React", "Storybook", "Tailwind", "TypeScript"],
-    imageUrl: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&h=400&fit=crop",
+    imageUrl: "/images/placeholder-project.svg", // Replace with your project image
     projectUrl: "#",
   },
   {
@@ -31,7 +34,7 @@ const projects = [
     description:
       "Beautiful weather application featuring real-time data, interactive maps, and personalized forecasts with location-based services.",
     techStack: ["Astro", "React", "Weather API", "Chart.js"],
-    imageUrl: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=400&fit=crop",
+    imageUrl: "/images/placeholder-project.svg", // Replace with your project image
     projectUrl: "#",
   },
 ];
@@ -48,7 +51,7 @@ const projects = [
       class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-4 rounded-full shadow-neu-sm"
     >
     </div>
-    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+    <p class="text-center text-gray-700 mb-12 max-w-2xl mx-auto">
       A selection of my recent work showcasing my skills in full-stack
       development, UI/UX design, and modern web technologies.
     </p>

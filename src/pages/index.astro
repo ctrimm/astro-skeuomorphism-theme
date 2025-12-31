@@ -13,8 +13,13 @@ import Footer from '../components/Footer.astro';
   title="Alex Morgan - Full-Stack Developer & UI/UX Designer"
   description="Portfolio showcasing modern web development projects with a focus on beautiful, accessible, and performant user experiences."
 >
+  <!-- Skip to main content link for screen readers and keyboard navigation -->
+  <a href="#main-content" class="skip-to-main">
+    Skip to main content
+  </a>
+
   <Navigation />
-  <main>
+  <main id="main-content">
     <Hero />
     <About />
     <Projects />

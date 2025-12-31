@@ -14,11 +14,12 @@ import { NeuCard } from "../skeuomorphic/NeuCard";
       <div class="flex justify-center">
         <div class="relative">
           <div class="w-64 h-64 md:w-80 md:h-80 rounded-3xl shadow-skeuo-deep overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500 p-1">
-            <div class="w-full h-full rounded-3xl bg-neubg flex items-center justify-center">
-              <svg class="w-32 h-32 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-              </svg>
-            </div>
+            <img
+              src="/images/placeholder-profile.svg"
+              alt="Profile photo of Alex Morgan"
+              class="w-full h-full rounded-3xl object-cover bg-neubg"
+              loading="lazy"
+            />
           </div>
         </div>
       </div>
@@ -43,18 +44,18 @@ import { NeuCard } from "../skeuomorphic/NeuCard";
         </NeuCard>
 
         <!-- Quick Stats -->
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-3 gap-4" role="list" aria-label="Professional statistics">
           <NeuCard variant="pressed" className="text-center" client:load>
-            <div class="text-3xl font-bold text-blue-600 mb-1">5+</div>
-            <div class="text-sm text-gray-600">Years</div>
+            <div class="text-3xl font-bold text-blue-600 mb-1" aria-label="5 plus">5+</div>
+            <div class="text-sm text-gray-700">Years</div>
           </NeuCard>
           <NeuCard variant="pressed" className="text-center" client:load>
-            <div class="text-3xl font-bold text-purple-600 mb-1">50+</div>
-            <div class="text-sm text-gray-600">Projects</div>
+            <div class="text-3xl font-bold text-purple-600 mb-1" aria-label="50 plus">50+</div>
+            <div class="text-sm text-gray-700">Projects</div>
           </NeuCard>
           <NeuCard variant="pressed" className="text-center" client:load>
-            <div class="text-3xl font-bold text-green-600 mb-1">100%</div>
-            <div class="text-sm text-gray-600">Passion</div>
+            <div class="text-3xl font-bold text-green-600 mb-1" aria-label="100 percent">100%</div>
+            <div class="text-sm text-gray-700">Passion</div>
           </NeuCard>
         </div>
       </div>
