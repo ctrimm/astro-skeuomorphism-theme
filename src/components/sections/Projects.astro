@@ -1,40 +1,42 @@
 ---
 import ProjectCard from "../ProjectCard.astro";
 
-// TODO: Replace placeholder images with your actual project screenshots
-// Recommended image size: 800x400px (16:9 ratio)
-// Place your images in /public/images/ and update the imageUrl paths below
+// Dashboard UI Mockups
+// To add your mockup images:
+// 1. Save your images in /public/images/ with the names: dashboard-1.png (or .jpg, .webp)
+// 2. Recommended image size: 800x400px (16:9 ratio)
+// 3. Replace the placeholder .svg files with your actual dashboard screenshots
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "Analytics Dashboard",
     description:
-      "A full-featured online shopping platform with real-time inventory management, secure payment processing, and an intuitive admin dashboard.",
-    techStack: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    imageUrl: "/images/placeholder-project.svg", // Replace with your project image
+      "Modern analytics dashboard with real-time data visualization, interactive charts, and comprehensive reporting features for data-driven decision making.",
+    techStack: ["React", "D3.js", "Tailwind", "TypeScript"],
+    imageUrl: "/images/dashboard-1.svg",
     projectUrl: "#",
   },
   {
-    title: "Task Management App",
+    title: "Admin Control Panel",
     description:
-      "Collaborative project management tool with real-time updates, drag-and-drop interface, and team collaboration features.",
+      "Comprehensive admin interface with user management, system monitoring, and configuration controls featuring an intuitive skeuomorphic design.",
+    techStack: ["Astro", "React", "Chart.js", "PostgreSQL"],
+    imageUrl: "/images/dashboard-2.svg",
+    projectUrl: "#",
+  },
+  {
+    title: "Project Management Hub",
+    description:
+      "Collaborative workspace dashboard with task tracking, team collaboration tools, and project timeline visualization in a tactile interface.",
     techStack: ["TypeScript", "Next.js", "Prisma", "WebSocket"],
-    imageUrl: "/images/placeholder-project.svg", // Replace with your project image
+    imageUrl: "/images/dashboard-3.svg",
     projectUrl: "#",
   },
   {
-    title: "Design System Library",
+    title: "Monitoring Dashboard",
     description:
-      "Comprehensive component library with accessibility-first design, extensive documentation, and customizable theming system.",
-    techStack: ["React", "Storybook", "Tailwind", "TypeScript"],
-    imageUrl: "/images/placeholder-project.svg", // Replace with your project image
-    projectUrl: "#",
-  },
-  {
-    title: "Weather Dashboard",
-    description:
-      "Beautiful weather application featuring real-time data, interactive maps, and personalized forecasts with location-based services.",
-    techStack: ["Astro", "React", "Weather API", "Chart.js"],
-    imageUrl: "/images/placeholder-project.svg", // Replace with your project image
+      "Real-time system monitoring interface with server metrics, performance analytics, and alert management featuring depth-rich visualizations.",
+    techStack: ["React", "Node.js", "InfluxDB", "Grafana"],
+    imageUrl: "/images/dashboard-4.svg",
     projectUrl: "#",
   },
 ];
