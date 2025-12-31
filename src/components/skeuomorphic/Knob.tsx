@@ -143,10 +143,10 @@ export const SkeuoKnob = ({
         {/* Center knob with metallic finish */}
         <div className="absolute inset-3 rounded-full bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 shadow-skeuo-deep">
           {/* Shine effect */}
-          <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/60 via-transparent to-transparent pointer-events-none z-0" />
+          <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/60 via-transparent to-transparent pointer-events-none" />
 
           {/* Grip texture */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             {[...Array(8)].map((_, i) => (
               <div
                 key={i}
@@ -158,30 +158,30 @@ export const SkeuoKnob = ({
             ))}
           </div>
 
-          {/* Indicator line - MUST be on top and highly visible */}
-          <div
-            className="absolute pointer-events-none"
-            style={{
-              width: "4px",
-              height: "36px",
-              top: "50%",
-              left: "50%",
-              transformOrigin: "50% 100%",
-              transform: `translate(-50%, -100%) translateY(-6px) rotate(${angle}deg)`,
-              zIndex: 30,
-            }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-b from-blue-400 to-blue-700 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)]">
-              {/* Bright highlight on indicator */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/70 to-transparent" />
-            </div>
-          </div>
-
           {/* Center cap */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-40">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="w-5 h-5 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 shadow-neu-inset">
               <div className="absolute inset-1.5 rounded-full bg-gradient-to-br from-gray-400 to-gray-600" />
             </div>
+          </div>
+        </div>
+
+        {/* Indicator line - MUST render last to be on top of everything */}
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            width: "4px",
+            height: "36px",
+            top: "50%",
+            left: "50%",
+            transformOrigin: "50% 100%",
+            transform: `translate(-50%, -100%) translateY(-6px) rotate(${angle}deg)`,
+            zIndex: 50,
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-400 to-blue-700 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)]">
+            {/* Bright highlight on indicator */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/70 to-transparent" />
           </div>
         </div>
       </div>

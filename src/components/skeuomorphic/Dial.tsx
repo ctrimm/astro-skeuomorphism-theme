@@ -141,7 +141,7 @@ export const SkeuoDial = ({
                   top: "50%",
                   left: "50%",
                   transformOrigin: "50% 100%",
-                  transform: `translate(-50%, -50%) rotate(${stepAngle}deg) translateY(-48px)`,
+                  transform: `translate(-50%, -50%) rotate(${stepAngle}deg) translateY(-54px)`,
                 }}
               />
             );
