@@ -17,6 +17,7 @@ import { SkeuoSegmentedControl } from '../components/skeuomorphic/SegmentedContr
 import { SkeuoProgressBar } from '../components/skeuomorphic/ProgressBar';
 import { SkeuoSwitch } from '../components/skeuomorphic/Switch';
 import { SkeuoLevelMeter } from '../components/skeuomorphic/LevelMeter';
+import { SkeuoLevelSlider } from '../components/skeuomorphic/LevelSlider';
 import { SkeuoPad } from '../components/skeuomorphic/Pad';
 ---
 
@@ -163,9 +164,25 @@ import { SkeuoPad } from '../components/skeuomorphic/Pad';
         <h2 class="text-3xl font-display font-bold text-gray-800 mb-8">Sliders</h2>
         <NeuCard client:load>
           <div class="space-y-8">
-            <SkeuoSlider min={0} max={100} value={75} label="Volume" client:load />
-            <SkeuoSlider min={0} max={100} value={50} label="Balance" client:load />
-            <SkeuoSlider min={0} max={100} value={25} label="Brightness" client:load />
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">Horizontal Sliders</h3>
+              <div class="space-y-6">
+                <SkeuoSlider min={0} max={100} value={75} label="Volume" client:load />
+                <SkeuoSlider min={0} max={100} value={50} label="Balance" client:load />
+                <SkeuoSlider min={0} max={100} value={25} label="Brightness" client:load />
+              </div>
+            </div>
+            <div class="pt-8 border-t border-gray-300">
+              <h3 class="text-lg font-semibold text-gray-800 mb-6 text-center">Vertical Level Sliders</h3>
+              <div class="grid md:grid-cols-3 gap-8 justify-items-center">
+                <SkeuoLevelSlider value={75} label="Input Gain" client:load />
+                <SkeuoLevelSlider value={50} label="Output Level" client:load />
+                <SkeuoLevelSlider value={85} label="Monitor" client:load />
+              </div>
+              <p class="text-sm text-gray-600 text-center mt-6">
+                Drag the knobs up or down to adjust the levels
+              </p>
+            </div>
           </div>
         </NeuCard>
       </section>
