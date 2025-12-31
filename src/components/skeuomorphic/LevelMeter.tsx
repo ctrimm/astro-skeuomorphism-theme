@@ -8,6 +8,7 @@ interface LevelMeterProps {
   orientation?: "vertical" | "horizontal";
   label?: string;
   className?: string;
+  animated?: boolean;
 }
 
 export const SkeuoLevelMeter = ({
@@ -17,12 +18,34 @@ export const SkeuoLevelMeter = ({
   orientation = "vertical",
   label,
   className,
+  animated = false,
 }: LevelMeterProps) => {
   const [currentValue, setCurrentValue] = useState(value);
 
   useEffect(() => {
-    setCurrentValue(value);
-  }, [value]);
+    if (animated) {
+      // Bounce animation between 20% and 95%
+      let animationValue = 20;
+      let direction = 1;
+      const interval = setInterval(() => {
+        animationValue += direction * (Math.random() * 8 + 2);
+
+        if (animationValue >= 95) {
+          animationValue = 95;
+          direction = -1;
+        } else if (animationValue <= 20) {
+          animationValue = 20;
+          direction = 1;
+        }
+
+        setCurrentValue(animationValue);
+      }, 100);
+
+      return () => clearInterval(interval);
+    } else {
+      setCurrentValue(value);
+    }
+  }, [value, animated]);
 
   const activeSegments = Math.round((currentValue / max) * segments);
 
