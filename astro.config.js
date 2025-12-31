@@ -4,8 +4,15 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://ctrimm.github.io',
+  base: '/astro-skeuomorphism-theme',
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        '@': '/src'
+      }
+    }
   },
   integrations: [react()]
 });
