@@ -1,42 +1,39 @@
 ---
 import ProjectCard from "../ProjectCard.astro";
 
-// Dashboard UI Mockups
-// To add your mockup images:
-// 1. Save your images in /public/images/ with the names: dashboard-1.png (or .jpg, .webp)
-// 2. Recommended image size: 800x400px (16:9 ratio)
-// 3. Replace the placeholder .svg files with your actual dashboard screenshots
+const base = import.meta.env.BASE_URL;
+
 const projects = [
   {
-    title: "Analytics Dashboard",
+    title: "E-Commerce Platform",
     description:
-      "Modern analytics dashboard with real-time data visualization, interactive charts, and comprehensive reporting features for data-driven decision making.",
-    techStack: ["React", "D3.js", "Tailwind", "TypeScript"],
-    imageUrl: "/images/dashboard-1.svg",
+      "Full-featured online shopping platform with real-time inventory management, secure payment processing, and an intuitive admin dashboard.",
+    techStack: ["React", "Node.js", "PostgreSQL", "Stripe"],
+    imageUrl: `${base}images/Gemini-eComm.png`,
     projectUrl: "#",
   },
   {
-    title: "Admin Control Panel",
+    title: "Task Management App",
     description:
-      "Comprehensive admin interface with user management, system monitoring, and configuration controls featuring an intuitive skeuomorphic design.",
-    techStack: ["Astro", "React", "Chart.js", "PostgreSQL"],
-    imageUrl: "/images/dashboard-2.svg",
-    projectUrl: "#",
-  },
-  {
-    title: "Project Management Hub",
-    description:
-      "Collaborative workspace dashboard with task tracking, team collaboration tools, and project timeline visualization in a tactile interface.",
+      "Collaborative project management tool with real-time updates, drag-and-drop interface, and team collaboration features.",
     techStack: ["TypeScript", "Next.js", "Prisma", "WebSocket"],
-    imageUrl: "/images/dashboard-3.svg",
+    imageUrl: `${base}images/Gemini-Task-Management.png`,
     projectUrl: "#",
   },
   {
-    title: "Monitoring Dashboard",
+    title: "Design System Library",
     description:
-      "Real-time system monitoring interface with server metrics, performance analytics, and alert management featuring depth-rich visualizations.",
-    techStack: ["React", "Node.js", "InfluxDB", "Grafana"],
-    imageUrl: "/images/dashboard-4.svg",
+      "Comprehensive component library with accessibility-first design, extensive documentation, and customizable theming system.",
+    techStack: ["React", "Storybook", "Tailwind", "TypeScript"],
+    imageUrl: `${base}images/Gemini-Design-Library.png`,
+    projectUrl: "#",
+  },
+  {
+    title: "Weather Dashboard",
+    description:
+      "Beautiful weather application featuring real-time data, interactive maps, and personalized forecasts with location-based services.",
+    techStack: ["Astro", "React", "Weather API", "Chart.js"],
+    imageUrl: `${base}images/Gemini-Weather.png`,
     projectUrl: "#",
   },
 ];
