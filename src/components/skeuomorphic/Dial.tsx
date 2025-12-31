@@ -150,11 +150,25 @@ export const SkeuoDial = ({
           {/* Center dial */}
           <div className="absolute inset-5 rounded-full bg-gradient-to-br from-gray-200 via-gray-300 to-gray-500 shadow-skeuo-raised">
             {/* Metallic shine */}
-            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/50 via-transparent to-transparent" />
+            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/50 via-transparent to-transparent pointer-events-none" />
 
-            {/* Indicator pointer */}
+            {/* Grip notches around edge */}
+            {[...Array(12)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-1 h-2 bg-gray-400/30 rounded-full pointer-events-none"
+                style={{
+                  top: "4%",
+                  left: "50%",
+                  transform: `translateX(-50%) rotate(${i * 30}deg)`,
+                  transformOrigin: "bottom center",
+                }}
+              />
+            ))}
+
+            {/* Indicator pointer - moved to render on top */}
             <div
-              className="absolute w-2 h-12 bg-gradient-to-b from-red-400 to-red-700 rounded-full shadow-lg transition-transform duration-100"
+              className="absolute w-2 h-12 bg-gradient-to-b from-red-400 to-red-700 rounded-full shadow-lg transition-transform duration-100 z-10 pointer-events-none"
               style={{
                 top: "12%",
                 left: "50%",
@@ -166,7 +180,7 @@ export const SkeuoDial = ({
             </div>
 
             {/* Center cap with screw detail */}
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
               <div className="w-7 h-7 rounded-full bg-gradient-to-br from-gray-200 to-gray-400 shadow-neu">
                 <div className="absolute inset-1.5 rounded-full bg-gradient-to-br from-gray-400 to-gray-600 shadow-inner">
                   {/* Screw slot */}
@@ -176,20 +190,6 @@ export const SkeuoDial = ({
                 </div>
               </div>
             </div>
-
-            {/* Grip notches around edge */}
-            {[...Array(12)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-1 h-2 bg-gray-400/30 rounded-full"
-                style={{
-                  top: "4%",
-                  left: "50%",
-                  transform: `translateX(-50%) rotate(${i * 30}deg)`,
-                  transformOrigin: "bottom center",
-                }}
-              />
-            ))}
           </div>
         </div>
 
