@@ -158,21 +158,23 @@ export const SkeuoKnob = ({
             ))}
           </div>
 
-          {/* Indicator line - MUST be on top and more visible */}
+          {/* Indicator line - MUST be on top and highly visible */}
           <div
-            className="absolute bg-gradient-to-b from-blue-500 to-blue-700 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.6)] transition-transform duration-100 pointer-events-none"
+            className="absolute pointer-events-none"
             style={{
-              width: "3px",
-              height: "32px",
-              top: "18%",
+              width: "4px",
+              height: "36px",
+              top: "50%",
               left: "50%",
-              transform: `translateX(-50%) rotate(${angle}deg)`,
               transformOrigin: "50% 100%",
+              transform: `translate(-50%, -100%) translateY(-6px) rotate(${angle}deg)`,
               zIndex: 30,
             }}
           >
-            {/* Bright highlight on indicator */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-blue-400 to-blue-700 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)]">
+              {/* Bright highlight on indicator */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/70 to-transparent" />
+            </div>
           </div>
 
           {/* Center cap */}
