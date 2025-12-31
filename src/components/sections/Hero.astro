@@ -1,0 +1,62 @@
+---
+import { SkeuoButton } from "../skeuomorphic/Button";
+---
+
+<section
+  id="hero"
+  class="min-h-screen flex items-center justify-center bg-neubg relative overflow-hidden"
+>
+  <!-- Subtle texture overlay -->
+  <div class="absolute inset-0 opacity-5 bg-paper-texture"></div>
+
+  <div class="relative z-10 text-center max-w-4xl px-4">
+    <!-- Neumorphic name card -->
+    <div class="inline-block p-8 md:p-12 rounded-3xl shadow-neu mb-8 bg-neubg">
+      <h1
+        class="text-5xl md:text-7xl font-display font-bold bg-gradient-to-br from-gray-700 to-gray-900 bg-clip-text text-transparent mb-3"
+      >
+        Alex Morgan
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-600 font-medium">
+        Full-Stack Developer & UI/UX Designer
+      </p>
+      <p class="text-base md:text-lg text-gray-500 mt-2">
+        San Francisco, CA
+      </p>
+    </div>
+
+    <!-- Description -->
+    <p class="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto leading-relaxed">
+      Crafting beautiful, intuitive digital experiences with a passion for
+      modern design and cutting-edge technology.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <SkeuoButton variant="primary" href="#projects" client:load>
+        View Projects
+      </SkeuoButton>
+      <SkeuoButton variant="raised" href="#contact" client:load>
+        Contact Me
+      </SkeuoButton>
+    </div>
+  </div>
+
+  <!-- Decorative elements -->
+  <div
+    class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
+  >
+    <svg
+      class="w-6 h-6 text-gray-400"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>

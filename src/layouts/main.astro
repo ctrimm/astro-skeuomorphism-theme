@@ -1,16 +1,49 @@
 ---
 import '../styles/global.css';
-const { content } = Astro.props;
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Alex Morgan - Full-Stack Developer & UI/UX Designer',
+  description = 'Portfolio showcasing modern web development projects with a focus on beautiful, accessible, and performant user experiences.',
+} = Astro.props;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>Audit Pro</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Alex Morgan" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body class="antialiased">
+    <slot />
+  </body>
 </html>

@@ -36,6 +36,24 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Skeuomorphic/Neumorphic color system */
+  --neu-bg-light: #e0e5ec;
+  --neu-bg: #d1d9e6;
+  --neu-bg-dark: #b8c2cc;
+  --neu-shadow-dark: rgba(0, 0, 0, 0.1);
+  --neu-shadow-light: rgba(255, 255, 255, 0.8);
+
+  /* Skeuomorphic accent colors */
+  --accent-blue: #3b82f6;
+  --accent-purple: #8b5cf6;
+  --accent-green: #10b981;
+  --accent-amber: #f59e0b;
+
+  /* Text colors for skeuomorphic design */
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
 }
 
 .dark {
