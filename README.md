@@ -7,7 +7,7 @@ A modern, beautiful skeuomorphic personal portfolio theme built with Astro, Reac
 ## ✨ Features
 
 - 🎨 **Modern Skeuomorphism** - Beautiful depth-rich design with realistic shadows and gradients
-- 🎛️ **16+ Skeuomorphic Components** - Buttons, knobs, dials, switches, sliders, meters, LEDs, pads, and more
+- 🎛️ **17+ Skeuomorphic Components** - Buttons, knobs, dials, switches, sliders, meters, LEDs, pads, and more
 - 📄 **Components Showcase Page** - Interactive demo of all components at `/components`
 - ⚡️ **Astro 5** - Ultra-fast static site generation
 - ⚛️ **React 19** - Interactive UI components with islands architecture
@@ -53,7 +53,7 @@ A modern, beautiful skeuomorphic personal portfolio theme built with Astro, Reac
 
 ## 🎛️ Skeuomorphic Components
 
-This theme includes 16+ interactive skeuomorphic components:
+This theme includes 17+ interactive skeuomorphic components:
 
 ### Core Components
 - **SkeuoButton** - 4 variants (primary, raised, flat, glass)
@@ -61,16 +61,17 @@ This theme includes 16+ interactive skeuomorphic components:
 - **SkeuoToggle** - Tactile toggle switch
 
 ### Rotary Controls
-- **SkeuoKnob** - Draggable rotary knob with 3D appearance
-- **SkeuoDial** - Step-based dial with metallic finish
+- **SkeuoKnob** - Circular drag rotary knob with metallic finish
+- **SkeuoDial** - Step-based dial with glow indicators
 
 ### Linear Controls
 - **SkeuoSlider** - Horizontal slider with gradient fill
+- **SkeuoLevelSlider** - Vertical VU-style slider with draggable knob
 
 ### Meters & Indicators
 - **SkeuoMeter** - Analog-style gauge with animated needle
 - **SkeuoLED** - Glowing LED indicators (5 colors, 3 sizes)
-- **SkeuoLevelMeter** - VU meter with color-coded segments
+- **SkeuoLevelMeter** - VU meter with color-coded segments (can be animated)
 
 ### Form Inputs
 - **SkeuoCheckbox** - 3D checkbox control
