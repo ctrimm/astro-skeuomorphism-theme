@@ -143,10 +143,10 @@ export const SkeuoKnob = ({
         {/* Center knob with metallic finish */}
         <div className="absolute inset-3 rounded-full bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 shadow-skeuo-deep">
           {/* Shine effect */}
-          <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/60 via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/60 via-transparent to-transparent pointer-events-none z-0" />
 
           {/* Grip texture */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
             {[...Array(8)].map((_, i) => (
               <div
                 key={i}
@@ -158,23 +158,27 @@ export const SkeuoKnob = ({
             ))}
           </div>
 
-          {/* Indicator line - moved to render on top */}
+          {/* Indicator line - MUST be on top and more visible */}
           <div
-            className="absolute w-1.5 h-9 bg-gradient-to-b from-blue-400 to-blue-600 rounded-full shadow-lg transition-transform duration-100 z-10 pointer-events-none"
+            className="absolute bg-gradient-to-b from-blue-500 to-blue-700 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.6)] transition-transform duration-100 pointer-events-none"
             style={{
-              top: "12%",
+              width: "3px",
+              height: "32px",
+              top: "18%",
               left: "50%",
               transform: `translateX(-50%) rotate(${angle}deg)`,
-              transformOrigin: "bottom center",
+              transformOrigin: "50% 100%",
+              zIndex: 30,
             }}
           >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/40 to-transparent" />
+            {/* Bright highlight on indicator */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/60 to-transparent" />
           </div>
 
           {/* Center cap */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
-            <div className="w-4 h-4 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 shadow-neu-inset">
-              <div className="absolute inset-1 rounded-full bg-gradient-to-br from-gray-400 to-gray-600" />
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-40">
+            <div className="w-5 h-5 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 shadow-neu-inset">
+              <div className="absolute inset-1.5 rounded-full bg-gradient-to-br from-gray-400 to-gray-600" />
             </div>
           </div>
         </div>

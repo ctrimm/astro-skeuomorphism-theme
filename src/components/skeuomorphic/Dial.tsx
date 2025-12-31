@@ -150,39 +150,45 @@ export const SkeuoDial = ({
           {/* Center dial */}
           <div className="absolute inset-5 rounded-full bg-gradient-to-br from-gray-200 via-gray-300 to-gray-500 shadow-skeuo-raised">
             {/* Metallic shine */}
-            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/50 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/50 via-transparent to-transparent pointer-events-none z-0" />
 
             {/* Grip notches around edge */}
-            {[...Array(12)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-1 h-2 bg-gray-400/30 rounded-full pointer-events-none"
-                style={{
-                  top: "4%",
-                  left: "50%",
-                  transform: `translateX(-50%) rotate(${i * 30}deg)`,
-                  transformOrigin: "bottom center",
-                }}
-              />
-            ))}
+            <div className="absolute inset-0 pointer-events-none z-0">
+              {[...Array(12)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-1 h-2 bg-gray-400/30 rounded-full"
+                  style={{
+                    top: "4%",
+                    left: "50%",
+                    transform: `translateX(-50%) rotate(${i * 30}deg)`,
+                    transformOrigin: "50% 100%",
+                  }}
+                />
+              ))}
+            </div>
 
-            {/* Indicator pointer - moved to render on top */}
+            {/* Indicator pointer - centered and more visible */}
             <div
-              className="absolute w-2 h-12 bg-gradient-to-b from-red-400 to-red-700 rounded-full shadow-lg transition-transform duration-100 z-10 pointer-events-none"
+              className="absolute bg-gradient-to-b from-red-500 to-red-800 rounded-full shadow-[0_0_8px_rgba(239,68,68,0.6)] transition-transform duration-100 pointer-events-none"
               style={{
-                top: "12%",
+                width: "3px",
+                height: "46px",
+                top: "50%",
                 left: "50%",
-                transform: `translateX(-50%) rotate(${angle}deg)`,
-                transformOrigin: "bottom center",
+                transform: `translate(-50%, -50%) rotate(${angle}deg) translateY(-23px)`,
+                transformOrigin: "50% 50%",
+                zIndex: 30,
               }}
             >
-              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/40 to-transparent" />
+              {/* Bright highlight on pointer */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/50 to-transparent" />
             </div>
 
             {/* Center cap with screw detail */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
-              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-gray-200 to-gray-400 shadow-neu">
-                <div className="absolute inset-1.5 rounded-full bg-gradient-to-br from-gray-400 to-gray-600 shadow-inner">
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 40 }}>
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-200 to-gray-400 shadow-neu">
+                <div className="absolute inset-2 rounded-full bg-gradient-to-br from-gray-400 to-gray-600 shadow-inner">
                   {/* Screw slot */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-3 h-0.5 bg-gray-700 rounded-full" />
