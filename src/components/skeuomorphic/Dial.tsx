@@ -132,16 +132,16 @@ export const SkeuoDial = ({
               <div
                 key={i}
                 className={cn(
-                  "absolute w-1 h-4 rounded-full transition-all duration-200",
+                  "absolute w-1.5 h-5 rounded-full transition-all duration-200",
                   isActive
-                    ? "bg-gradient-to-b from-blue-400 to-blue-600 shadow-[0_0_4px_rgba(59,130,246,0.5)]"
+                    ? "bg-gradient-to-b from-blue-400 to-blue-600 shadow-[0_0_6px_rgba(59,130,246,0.6)]"
                     : "bg-gray-500/60"
                 )}
                 style={{
-                  top: "6%",
+                  top: "50%",
                   left: "50%",
-                  transform: `translateX(-50%) rotate(${stepAngle}deg)`,
-                  transformOrigin: "bottom center",
+                  transformOrigin: "50% 100%",
+                  transform: `translate(-50%, -100%) translateY(-46px) rotate(${stepAngle}deg)`,
                 }}
               />
             );
@@ -156,21 +156,22 @@ export const SkeuoDial = ({
             {[...Array(12)].map((_, i) => (
               <div
                 key={i}
-                className="absolute w-1 h-2 bg-gray-400/30 rounded-full pointer-events-none"
+                className="absolute w-1.5 h-3 bg-gray-400/40 rounded-full pointer-events-none"
                 style={{
                   top: "50%",
                   left: "50%",
-                  transform: `translate(-50%, -50%) rotate(${i * 30}deg) translateY(-40%)`,
+                  transformOrigin: "50% 50%",
+                  transform: `translate(-50%, -50%) rotate(${i * 30}deg) translateY(-28px)`,
                 }}
               />
             ))}
 
             {/* Indicator pointer - rotates from base at center */}
             <div
-              className="absolute bg-gradient-to-b from-red-500 to-red-800 rounded-full shadow-[0_0_10px_rgba(239,68,68,0.7)] transition-transform duration-100 pointer-events-none"
+              className="absolute bg-gradient-to-b from-red-500 to-red-800 rounded-full shadow-[0_0_12px_rgba(239,68,68,0.8)] transition-transform duration-100 pointer-events-none"
               style={{
-                width: "4px",
-                height: "36px",
+                width: "5px",
+                height: "42px",
                 top: "50%",
                 left: "50%",
                 transformOrigin: "50% 100%",
@@ -199,11 +200,12 @@ export const SkeuoDial = ({
         {[0, 90, 180, 270].map((rotation) => (
           <div
             key={rotation}
-            className="absolute w-2.5 h-2.5 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 shadow-inner"
+            className="absolute w-3 h-3 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 shadow-inner"
             style={{
-              top: "12%",
+              top: "50%",
               left: "50%",
-              transform: `translateX(-50%) rotate(${rotation}deg) translateY(-58px)`,
+              transformOrigin: "50% 50%",
+              transform: `translate(-50%, -50%) rotate(${rotation}deg) translateY(-64px)`,
             }}
           >
             <div className="absolute inset-0.5 rounded-full bg-gray-700 flex items-center justify-center">
