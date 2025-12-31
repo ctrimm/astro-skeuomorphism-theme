@@ -143,11 +143,24 @@ export const SkeuoKnob = ({
         {/* Center knob with metallic finish */}
         <div className="absolute inset-3 rounded-full bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 shadow-skeuo-deep">
           {/* Shine effect */}
-          <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/60 via-transparent to-transparent" />
+          <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/60 via-transparent to-transparent pointer-events-none" />
 
-          {/* Indicator line */}
+          {/* Grip texture */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-12 h-0.5 bg-gray-400/20 rounded-full"
+                style={{
+                  transform: `rotate(${i * 22.5}deg)`,
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Indicator line - moved to render on top */}
           <div
-            className="absolute w-1.5 h-9 bg-gradient-to-b from-blue-400 to-blue-600 rounded-full shadow-lg transition-transform duration-100"
+            className="absolute w-1.5 h-9 bg-gradient-to-b from-blue-400 to-blue-600 rounded-full shadow-lg transition-transform duration-100 z-10 pointer-events-none"
             style={{
               top: "12%",
               left: "50%",
@@ -159,23 +172,10 @@ export const SkeuoKnob = ({
           </div>
 
           {/* Center cap */}
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
             <div className="w-4 h-4 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 shadow-neu-inset">
               <div className="absolute inset-1 rounded-full bg-gradient-to-br from-gray-400 to-gray-600" />
             </div>
-          </div>
-
-          {/* Grip texture */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-12 h-0.5 bg-gray-400/20 rounded-full"
-                style={{
-                  transform: `rotate(${i * 22.5}deg)`,
-                }}
-              />
-            ))}
           </div>
         </div>
       </div>
