@@ -7,6 +7,8 @@ A modern, beautiful skeuomorphic personal portfolio theme built with Astro, Reac
 ## ✨ Features
 
 - 🎨 **Modern Skeuomorphism** - Beautiful depth-rich design with realistic shadows and gradients
+- 🎛️ **16+ Skeuomorphic Components** - Buttons, knobs, dials, switches, sliders, meters, LEDs, pads, and more
+- 📄 **Components Showcase Page** - Interactive demo of all components at `/components`
 - ⚡️ **Astro 5** - Ultra-fast static site generation
 - ⚛️ **React 19** - Interactive UI components with islands architecture
 - 🎯 **TypeScript** - Full type safety
@@ -47,6 +49,45 @@ A modern, beautiful skeuomorphic personal portfolio theme built with Astro, Reac
 
 5. **Open your browser**
    - Navigate to `http://localhost:4321`
+   - Visit `/components` to see the full component showcase
+
+## 🎛️ Skeuomorphic Components
+
+This theme includes 16+ interactive skeuomorphic components:
+
+### Core Components
+- **SkeuoButton** - 4 variants (primary, raised, flat, glass)
+- **NeuCard** - Raised and pressed card variants
+- **SkeuoToggle** - Tactile toggle switch
+
+### Rotary Controls
+- **SkeuoKnob** - Draggable rotary knob with 3D appearance
+- **SkeuoDial** - Step-based dial with metallic finish
+
+### Linear Controls
+- **SkeuoSlider** - Horizontal slider with gradient fill
+
+### Meters & Indicators
+- **SkeuoMeter** - Analog-style gauge with animated needle
+- **SkeuoLED** - Glowing LED indicators (5 colors, 3 sizes)
+- **SkeuoLevelMeter** - VU meter with color-coded segments
+
+### Form Inputs
+- **SkeuoCheckbox** - 3D checkbox control
+- **SkeuoRadio** - Radio button group
+
+### Advanced Controls
+- **SkeuoSwitch** - Physical ON/OFF switch with LED indicator
+- **SkeuoSegmentedControl** - iOS-style segmented picker
+
+### Progress & Loading
+- **SkeuoProgressBar** - Progress bar with shimmer animation
+- **SkeuoSpinner** - Loading spinner with glow effect
+
+### Interactive Pads
+- **SkeuoPad** - Grid of pressable drum pad style buttons
+
+**See them all in action:** Visit `/components` route for interactive demos and usage examples!
 
 ## 📋 Available Commands
 

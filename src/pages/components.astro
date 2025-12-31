@@ -1,0 +1,380 @@
+---
+import Layout from '../layouts/main.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { SkeuoButton } from '../components/skeuomorphic/Button';
+import { NeuCard } from '../components/skeuomorphic/NeuCard';
+import { SkeuoToggle } from '../components/skeuomorphic/Toggle';
+import { SkeuoKnob } from '../components/skeuomorphic/Knob';
+import { SkeuoSlider } from '../components/skeuomorphic/Slider';
+import { SkeuoDial } from '../components/skeuomorphic/Dial';
+import { SkeuoMeter } from '../components/skeuomorphic/Meter';
+import { SkeuoLED } from '../components/skeuomorphic/LED';
+import { SkeuoCheckbox } from '../components/skeuomorphic/Checkbox';
+import { SkeuoRadio } from '../components/skeuomorphic/Radio';
+import { SkeuoSpinner } from '../components/skeuomorphic/Spinner';
+import { SkeuoSegmentedControl } from '../components/skeuomorphic/SegmentedControl';
+import { SkeuoProgressBar } from '../components/skeuomorphic/ProgressBar';
+import { SkeuoSwitch } from '../components/skeuomorphic/Switch';
+import { SkeuoLevelMeter } from '../components/skeuomorphic/LevelMeter';
+import { SkeuoPad } from '../components/skeuomorphic/Pad';
+---
+
+<Layout
+  title="Skeuomorphic Components Showcase"
+  description="Explore all available skeuomorphic UI components including buttons, knobs, dials, switches, sliders, and more."
+>
+  <a href="#main-content" class="skip-to-main">
+    Skip to main content
+  </a>
+
+  <Navigation />
+
+  <main id="main-content" class="pt-24 pb-20 bg-gradient-to-b from-neubg to-neubg-light">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-6xl font-display font-bold text-gray-800 mb-4">
+          Components Showcase
+        </h1>
+        <div class="w-32 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6 rounded-full shadow-neu-sm"></div>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto">
+          A comprehensive collection of skeuomorphic UI components. All components are interactive
+          and ready to use in your projects.
+        </p>
+      </div>
+
+      <!-- Buttons Section -->
+      <section class="mb-20">
+        <h2 class="text-3xl font-display font-bold text-gray-800 mb-8">Buttons</h2>
+        <NeuCard client:load>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="flex flex-col items-center gap-3">
+              <SkeuoButton variant="primary" client:load>
+                Primary
+              </SkeuoButton>
+              <span class="text-sm text-gray-600">Primary Button</span>
+            </div>
+            <div class="flex flex-col items-center gap-3">
+              <SkeuoButton variant="raised" client:load>
+                Raised
+              </SkeuoButton>
+              <span class="text-sm text-gray-600">Raised Button</span>
+            </div>
+            <div class="flex flex-col items-center gap-3">
+              <SkeuoButton variant="flat" client:load>
+                Flat
+              </SkeuoButton>
+              <span class="text-sm text-gray-600">Flat Button</span>
+            </div>
+            <div class="flex flex-col items-center gap-3">
+              <SkeuoButton variant="glass" client:load>
+                Glass
+              </SkeuoButton>
+              <span class="text-sm text-gray-600">Glass Button</span>
+            </div>
+          </div>
+        </NeuCard>
+      </section>
+
+      <!-- Cards Section -->
+      <section class="mb-20">
+        <h2 class="text-3xl font-display font-bold text-gray-800 mb-8">Cards</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <NeuCard variant="raised" client:load>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Raised Card</h3>
+            <p class="text-gray-700">
+              Extruded appearance with outward shadows creating depth and elevation.
+            </p>
+          </NeuCard>
+          <NeuCard variant="pressed" client:load>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Pressed Card</h3>
+            <p class="text-gray-700">
+              Inset appearance with inward shadows creating a recessed effect.
+            </p>
+          </NeuCard>
+          <NeuCard variant="raised" hoverable client:load>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Hoverable Card</h3>
+            <p class="text-gray-700">
+              Interactive card with lift effect on hover. Try hovering over me!
+            </p>
+          </NeuCard>
+        </div>
+      </section>
+
+      <!-- Controls Section -->
+      <section class="mb-20">
+        <h2 class="text-3xl font-display font-bold text-gray-800 mb-8">Controls</h2>
+        <NeuCard client:load>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="flex flex-col items-center">
+              <SkeuoToggle label="Toggle Switch" client:load />
+              <p class="text-sm text-gray-600 mt-4 text-center">Classic toggle switch</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <SkeuoCheckbox label="Checkbox" client:load />
+              <p class="text-sm text-gray-600 mt-4 text-center">Checkbox control</p>
+            </div>
+            <div class="flex flex-col items-center">
+              <SkeuoRadio
+                options={[
+                  { value: 'opt1', label: 'Option 1' },
+                  { value: 'opt2', label: 'Option 2' },
+                  { value: 'opt3', label: 'Option 3' },
+                ]}
+                name="demo-radio"
+                client:load
+              />
+              <p class="text-sm text-gray-600 mt-4 text-center">Radio buttons</p>
+            </div>
+          </div>
+        </NeuCard>
+      </section>
+
+      <!-- Rotary Controls Section -->
+      <section class="mb-20">
+        <h2 class="text-3xl font-display font-bold text-gray-800 mb-8">Rotary Controls</h2>
+        <NeuCard client:load>
+          <div class="grid md:grid-cols-3 gap-12 justify-items-center">
+            <div class="flex flex-col items-center">
+              <SkeuoKnob min={0} max={100} value={65} label="Volume" client:load />
+              <p class="text-sm text-gray-600 mt-4 text-center">
+                Drag up/down to adjust
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <SkeuoDial min={0} max={10} value={7} steps={10} label="Channel" client:load />
+              <p class="text-sm text-gray-600 mt-4 text-center">
+                Step-based dial control
+              </p>
+            </div>
+            <div class="flex flex-col items-center">
+              <SkeuoKnob min={0} max={100} value={30} label="Bass" client:load />
+              <p class="text-sm text-gray-600 mt-4 text-center">
+                Audio control knob
+              </p>
+            </div>
+          </div>
+        </NeuCard>
+      </section>
+
+      <!-- Sliders Section -->
+      <section class="mb-20">
+        <h2 class="text-3xl font-display font-bold text-gray-800 mb-8">Sliders</h2>
+        <NeuCard client:load>
+          <div class="space-y-8">
+            <SkeuoSlider min={0} max={100} value={75} label="Volume" client:load />
+            <SkeuoSlider min={0} max={100} value={50} label="Balance" client:load />
+            <SkeuoSlider min={0} max={100} value={25} label="Brightness" client:load />
+          </div>
+        </NeuCard>
+      </section>
+
+      <!-- Meters Section -->
+      <section class="mb-20">
+        <h2 class="text-3xl font-display font-bold text-gray-800 mb-8">Meters & Indicators</h2>
+        <NeuCard client:load>
+          <div class="grid md:grid-cols-2 gap-12 justify-items-center">
+            <div class="flex flex-col items-center">
+              <SkeuoMeter value={75} label="Power Level" color="blue" client:load />
+            </div>
+            <div class="flex flex-col items-center">
+              <SkeuoMeter value={42.5} label="Temperature" color="orange" client:load />
+            </div>
+          </div>
+        </NeuCard>
+      </section>
+
+      <!-- LED Indicators Section -->
+      <section class="mb-20">
+        <h2 class="text-3xl font-display font-bold text-gray-800 mb-8">LED Indicators</h2>
+        <NeuCard client:load>
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+            <SkeuoLED on={true} color="red" size="lg" label="Power" client:load />
+            <SkeuoLED on={true} color="green" size="lg" label="Ready" client:load />
+            <SkeuoLED on={true} color="blue" size="lg" label="Active" client:load />
+            <SkeuoLED on={false} color="yellow" size="lg" label="Warning" client:load />
+            <SkeuoLED on={false} color="orange" size="lg" label="Alert" client:load />
+          </div>
+          <div class="mt-8 p-4 rounded-lg bg-gray-800/10">
+            <p class="text-sm text-gray-600 text-center">
+              LEDs can be in 'on' or 'off' state with realistic glow effects
+            </p>
+          </div>
+        </NeuCard>
+      </section>
+
+      <!-- Loading States Section -->
+      <section class="mb-20">
+        <h2 class="text-3xl font-display font-bold text-gray-800 mb-8">Loading States</h2>
+        <NeuCard client:load>
+          <div class="grid md:grid-cols-3 gap-12 justify-items-center">
+            <div class="flex flex-col items-center gap-4">
+              <SkeuoSpinner size="sm" color="blue" client:load />
+              <span class="text-sm text-gray-600">Small Spinner</span>
+            </div>
+            <div class="flex flex-col items-center gap-4">
+              <SkeuoSpinner size="md" color="purple" client:load />
+              <span class="text-sm text-gray-600">Medium Spinner</span>
+            </div>
+            <div class="flex flex-col items-center gap-4">
+              <SkeuoSpinner size="lg" color="orange" client:load />
+              <span class="text-sm text-gray-600">Large Spinner</span>
+            </div>
+          </div>
+        </NeuCard>
+      </section>
+
+      <!-- Progress Indicators Section -->
+      <section class="mb-20">
+        <h2 class="text-3xl font-display font-bold text-gray-800 mb-8">Progress Indicators</h2>
+        <NeuCard client:load>
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">Progress Bars</h3>
+              <div class="space-y-6">
+                <SkeuoProgressBar value={75} color="blue" height="md" client:load />
+                <SkeuoProgressBar value={50} color="green" height="md" client:load />
+                <SkeuoProgressBar value={33} color="purple" height="sm" client:load />
+                <SkeuoProgressBar value={90} color="orange" height="lg" client:load />
+              </div>
+            </div>
+            <div class="pt-8 border-t border-gray-300">
+              <h3 class="text-lg font-semibold text-gray-800 mb-6">Level Meters</h3>
+              <div class="grid md:grid-cols-2 gap-8 justify-items-center">
+                <SkeuoLevelMeter value={75} label="Audio L" orientation="vertical" client:load />
+                <SkeuoLevelMeter value={60} label="Audio R" orientation="vertical" client:load />
+              </div>
+            </div>
+          </div>
+        </NeuCard>
+      </section>
+
+      <!-- Advanced Controls Section -->
+      <section class="mb-20">
+        <h2 class="text-3xl font-display font-bold text-gray-800 mb-8">Advanced Controls</h2>
+        <NeuCard client:load>
+          <div class="space-y-12">
+            <div class="flex flex-col items-center gap-4">
+              <h3 class="text-lg font-semibold text-gray-800">Segmented Control</h3>
+              <SkeuoSegmentedControl
+                options={[
+                  { value: 'day', label: 'Day' },
+                  { value: 'week', label: 'Week' },
+                  { value: 'month', label: 'Month' },
+                  { value: 'year', label: 'Year' },
+                ]}
+                client:load
+              />
+            </div>
+            <div class="pt-8 border-t border-gray-300">
+              <h3 class="text-lg font-semibold text-gray-800 mb-6 text-center">Physical Switches</h3>
+              <div class="grid md:grid-cols-2 gap-8 justify-items-center">
+                <SkeuoSwitch label="Power Mode" client:load />
+                <SkeuoSwitch label="Auto Save" checked={true} client:load />
+              </div>
+            </div>
+          </div>
+        </NeuCard>
+      </section>
+
+      <!-- Interactive Pads Section -->
+      <section class="mb-20">
+        <h2 class="text-3xl font-display font-bold text-gray-800 mb-8">Interactive Pads</h2>
+        <NeuCard client:load>
+          <div class="flex flex-col items-center gap-6">
+            <h3 class="text-lg font-semibold text-gray-800">Drum Pad Controller</h3>
+            <SkeuoPad
+              buttons={[
+                { id: '1', label: '1', color: 'red' },
+                { id: '2', label: '2', color: 'orange' },
+                { id: '3', label: '3', color: 'yellow' },
+                { id: '4', label: '4', color: 'green' },
+                { id: '5', label: '5', color: 'blue' },
+                { id: '6', label: '6', color: 'purple' },
+                { id: '7', label: '7', color: 'red' },
+                { id: '8', label: '8', color: 'orange' },
+                { id: '9', label: '9', color: 'yellow' },
+              ]}
+              columns={3}
+              onPress={(id) => console.log('Pressed pad:', id)}
+              client:load
+            />
+            <p class="text-sm text-gray-600 text-center max-w-md">
+              Click or tap the pads to trigger actions. Each pad provides haptic-style feedback.
+            </p>
+          </div>
+        </NeuCard>
+      </section>
+
+      <!-- Complex Panel Example -->
+      <section class="mb-20">
+        <h2 class="text-3xl font-display font-bold text-gray-800 mb-8">Audio Mixer Panel</h2>
+        <NeuCard client:load>
+          <div class="p-6 rounded-xl bg-gradient-to-br from-gray-800 to-gray-900 shadow-skeuo-deep">
+            <h3 class="text-white text-xl font-bold mb-6">Channel Strip</h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <!-- Channel 1 -->
+              <div class="flex flex-col items-center gap-4 p-4 rounded-lg bg-gray-900/50">
+                <SkeuoLED on={true} color="green" label="CH 1" client:load />
+                <SkeuoSlider min={0} max={100} value={65} label="Gain" client:load />
+                <SkeuoKnob min={0} max={100} value={50} label="Pan" client:load />
+              </div>
+              <!-- Channel 2 -->
+              <div class="flex flex-col items-center gap-4 p-4 rounded-lg bg-gray-900/50">
+                <SkeuoLED on={true} color="green" label="CH 2" client:load />
+                <SkeuoSlider min={0} max={100} value={80} label="Gain" client:load />
+                <SkeuoKnob min={0} max={100} value={30} label="Pan" client:load />
+              </div>
+              <!-- Channel 3 -->
+              <div class="flex flex-col items-center gap-4 p-4 rounded-lg bg-gray-900/50">
+                <SkeuoLED on={false} color="green" label="CH 3" client:load />
+                <SkeuoSlider min={0} max={100} value={40} label="Gain" client:load />
+                <SkeuoKnob min={0} max={100} value={70} label="Pan" client:load />
+              </div>
+              <!-- Master -->
+              <div class="flex flex-col items-center gap-4 p-4 rounded-lg bg-gray-900/50">
+                <SkeuoLED on={true} color="red" label="MASTER" client:load />
+                <SkeuoSlider min={0} max={100} value={75} label="Output" client:load />
+                <SkeuoMeter value={75} color="red" client:load />
+              </div>
+            </div>
+          </div>
+        </NeuCard>
+      </section>
+
+      <!-- Usage Instructions -->
+      <section>
+        <h2 class="text-3xl font-display font-bold text-gray-800 mb-8">How to Use</h2>
+        <NeuCard client:load>
+          <div class="prose max-w-none">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Importing Components</h3>
+            <pre class="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto text-sm"><code>{"import { SkeuoButton } from '@/components/skeuomorphic/Button';\nimport { SkeuoKnob } from '@/components/skeuomorphic/Knob';\nimport { SkeuoSlider } from '@/components/skeuomorphic/Slider';\nimport { SkeuoSwitch } from '@/components/skeuomorphic/Switch';\nimport { SkeuoProgressBar } from '@/components/skeuomorphic/ProgressBar';\nimport { SkeuoPad } from '@/components/skeuomorphic/Pad';\n// ... and more!"}</code></pre>
+
+            <h3 class="text-xl font-bold text-gray-800 mb-4 mt-8">Example Usage</h3>
+            <pre class="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto text-sm"><code>{"<SkeuoButton variant=\"primary\" client:load>\n  Click Me\n</SkeuoButton>\n\n<SkeuoKnob\n  min={0}\n  max={100}\n  value={50}\n  label=\"Volume\"\n  onChange={(value) => console.log(value)}\n  client:load\n/>\n\n<SkeuoSwitch\n  label=\"Power Mode\"\n  checked={true}\n  onChange={(checked) => console.log(checked)}\n  client:load\n/>\n\n<SkeuoProgressBar\n  value={75}\n  color=\"blue\"\n  height=\"md\"\n  client:load\n/>"}</code></pre>
+
+            <div class="mt-8 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+              <p class="text-gray-800">
+                <strong>Note:</strong> All interactive components require <code class="bg-gray-800 text-green-400 px-2 py-1 rounded">client:load</code>
+                directive when used in Astro components to enable interactivity.
+              </p>
+            </div>
+          </div>
+        </NeuCard>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  section {
+    scroll-margin-top: 5rem;
+  }
+
+  pre {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+</style>
