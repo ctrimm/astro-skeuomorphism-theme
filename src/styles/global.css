@@ -201,6 +201,26 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Neumorphic color palette */
+  --color-neubg-light: #e0e5ec;
+  --color-neubg: #d1d9e6;
+  --color-neubg-dark: #b8c2cc;
+
+  /* Custom box shadows for skeuomorphic design */
+  --shadow-neu-sm: 2px 2px 4px rgba(0,0,0,0.1), -2px -2px 4px rgba(255,255,255,0.8);
+  --shadow-neu: 4px 4px 8px rgba(0,0,0,0.1), -4px -4px 8px rgba(255,255,255,0.8);
+  --shadow-neu-lg: 8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.8);
+  --shadow-neu-xl: 12px 12px 24px rgba(0,0,0,0.12), -12px -12px 24px rgba(255,255,255,0.9);
+  --shadow-neu-inset: inset 2px 2px 4px rgba(0,0,0,0.1), inset -2px -2px 4px rgba(255,255,255,0.8);
+  --shadow-neu-inset-lg: inset 4px 4px 8px rgba(0,0,0,0.1), inset -4px -4px 8px rgba(255,255,255,0.8);
+  --shadow-skeuo-soft: 0 2px 4px rgba(0,0,0,0.05), 0 4px 8px rgba(0,0,0,0.05);
+  --shadow-skeuo-raised: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-skeuo-deep: 0 10px 20px rgba(0,0,0,0.15), 0 6px 6px rgba(0,0,0,0.1);
+  --shadow-skeuo-lifted: 0 8px 16px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.08);
+
+  /* Custom backdrop blur */
+  --backdrop-blur-glass: 12px;
 }
 
 @layer base {

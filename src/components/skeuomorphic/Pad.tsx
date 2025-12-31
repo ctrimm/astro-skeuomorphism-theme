@@ -50,13 +50,13 @@ export const SkeuoPad = ({
   return (
     <div
       className={cn(
-        "p-4 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 shadow-skeuo-deep",
+        "relative p-6 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 shadow-skeuo-deep",
         className
       )}
     >
       <div
-        className="grid gap-3"
-        style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
+        className="grid gap-4"
+        style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
       >
         {buttons.map((button) => {
           const isActive = activeButton === button.id;
@@ -66,6 +66,7 @@ export const SkeuoPad = ({
               onClick={() => handlePress(button.id)}
               className={cn(
                 "relative aspect-square rounded-2xl transition-all duration-150",
+                "min-w-20 min-h-20 md:min-w-24 md:min-h-24",
                 "bg-gradient-to-br shadow-skeuo-raised",
                 "active:shadow-neu-inset active:translate-y-0.5",
                 "focus:outline-none focus:ring-2 focus:ring-white/50",
