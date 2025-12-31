@@ -36,6 +36,24 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Skeuomorphic/Neumorphic color system */
+  --neu-bg-light: #e0e5ec;
+  --neu-bg: #d1d9e6;
+  --neu-bg-dark: #b8c2cc;
+  --neu-shadow-dark: rgba(0, 0, 0, 0.1);
+  --neu-shadow-light: rgba(255, 255, 255, 0.8);
+
+  /* Skeuomorphic accent colors */
+  --accent-blue: #3b82f6;
+  --accent-purple: #8b5cf6;
+  --accent-green: #10b981;
+  --accent-amber: #f59e0b;
+
+  /* Text colors for skeuomorphic design - WCAG AA compliant */
+  --text-primary: #111827; /* Gray-900 for maximum contrast */
+  --text-secondary: #374151; /* Gray-700 for 7:1 contrast on light bg */
+  --text-tertiary: #4b5563; /* Gray-600 for 4.5:1 contrast minimum */
 }
 
 .dark {
@@ -191,5 +209,70 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* WCAG 2.1 AA Accessibility Improvements */
+
+/* Enhanced focus styles for keyboard navigation */
+*:focus-visible {
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Ensure buttons have visible focus */
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+/* Skip to main content link for screen readers */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1rem 1.5rem;
+  background-color: var(--accent-blue);
+  color: white;
+  text-decoration: none;
+  border-radius: 0 0 0.5rem 0.5rem;
+  font-weight: 600;
+}
+
+.skip-to-main:focus {
+  left: 1rem;
+  top: 1rem;
+  outline: 3px solid white;
+}
+
+/* Ensure sufficient color contrast for interactive elements */
+.text-gray-600 {
+  color: var(--text-tertiary) !important;
+}
+
+.text-gray-700 {
+  color: var(--text-secondary) !important;
+}
+
+.text-gray-800,
+.text-gray-900 {
+  color: var(--text-primary) !important;
+}
+
+/* Form input focus states for accessibility */
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 0;
+}
+
+/* Ensure minimum tap target size (44x44px) for mobile */
+@media (max-width: 768px) {
+  button,
+  a[href] {
+    min-height: 44px;
+    min-width: 44px;
   }
 }

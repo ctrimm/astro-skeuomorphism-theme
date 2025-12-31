@@ -1,19 +1,42 @@
 ---
 import Layout from '../layouts/main.astro';
-import { Button } from "@/components/ui/button"
+import Navigation from '../components/Navigation.astro';
+import Hero from '../components/sections/Hero.astro';
+import About from '../components/sections/About.astro';
+import Projects from '../components/sections/Projects.astro';
+import Skills from '../components/sections/Skills.astro';
+import Contact from '../components/sections/Contact.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
-	<div class="flex items-center justify-center min-h-screen">
-		<Button>Click for Confetti! 🎉</Button>
-	</div>
+<Layout
+  title="Alex Morgan - Full-Stack Developer & UI/UX Designer"
+  description="Portfolio showcasing modern web development projects with a focus on beautiful, accessible, and performant user experiences."
+>
+  <!-- Skip to main content link for screen readers and keyboard navigation -->
+  <a href="#main-content" class="skip-to-main">
+    Skip to main content
+  </a>
+
+  <Navigation />
+  <main id="main-content">
+    <Hero />
+    <About />
+    <Projects />
+    <Skills />
+    <Contact />
+  </main>
+  <Footer />
 </Layout>
 
-<script>
-	import confetti from 'canvas-confetti';
-	const button = document.querySelector('[data-slot="button"]');
+<style>
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
 
-	if (button) {
-		button.addEventListener('click', () => confetti());
-	}
-</script>
+  /* Add padding to account for fixed navigation */
+  main section {
+    scroll-margin-top: 4rem;
+  }
+</style>

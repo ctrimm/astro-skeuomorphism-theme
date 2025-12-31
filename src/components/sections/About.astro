@@ -1,0 +1,64 @@
+---
+import { NeuCard } from "../skeuomorphic/NeuCard";
+---
+
+<section id="about" class="min-h-screen py-20 px-4 bg-gradient-to-b from-neubg to-neubg-light">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl md:text-5xl font-display font-bold text-center mb-4 text-gray-800">
+      About Me
+    </h2>
+    <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-12 rounded-full shadow-neu-sm"></div>
+
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <!-- Profile Image -->
+      <div class="flex justify-center">
+        <div class="relative">
+          <div class="w-64 h-64 md:w-80 md:h-80 rounded-3xl shadow-skeuo-deep overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500 p-1">
+            <img
+              src="/images/placeholder-profile.svg"
+              alt="Profile photo of Alex Morgan"
+              class="w-full h-full rounded-3xl object-cover bg-neubg"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="space-y-6">
+        <NeuCard client:load>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            Hello! I'm Alex Morgan, a passionate full-stack developer and UI/UX designer based in San Francisco.
+            With over 5 years of experience in the tech industry, I specialize in creating beautiful,
+            user-centered digital experiences that combine aesthetic appeal with functional excellence.
+          </p>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            My journey in web development started with a fascination for how design and code come together
+            to create meaningful interactions. Today, I work with cutting-edge technologies like React,
+            TypeScript, and modern CSS frameworks to build responsive, accessible, and performant applications.
+          </p>
+          <p class="text-gray-700 leading-relaxed">
+            When I'm not coding, you'll find me exploring the latest design trends, contributing to open-source
+            projects, or enjoying the vibrant tech community here in the Bay Area.
+          </p>
+        </NeuCard>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-3 gap-4" role="list" aria-label="Professional statistics">
+          <NeuCard variant="pressed" className="text-center" client:load>
+            <div class="text-3xl font-bold text-blue-600 mb-1" aria-label="5 plus">5+</div>
+            <div class="text-sm text-gray-700">Years</div>
+          </NeuCard>
+          <NeuCard variant="pressed" className="text-center" client:load>
+            <div class="text-3xl font-bold text-purple-600 mb-1" aria-label="50 plus">50+</div>
+            <div class="text-sm text-gray-700">Projects</div>
+          </NeuCard>
+          <NeuCard variant="pressed" className="text-center" client:load>
+            <div class="text-3xl font-bold text-green-600 mb-1" aria-label="100 percent">100%</div>
+            <div class="text-sm text-gray-700">Passion</div>
+          </NeuCard>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

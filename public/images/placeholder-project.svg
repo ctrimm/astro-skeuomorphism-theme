@@ -1,0 +1,7 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#E5E7EB"/>
+  <rect x="250" y="125" width="300" height="200" rx="8" fill="#9CA3AF"/>
+  <circle cx="320" cy="180" r="30" fill="#D1D5DB"/>
+  <path d="M360 220L420 280L480 200L540 280" stroke="#D1D5DB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="400" y="365" font-family="Arial, sans-serif" font-size="18" fill="#6B7280" text-anchor="middle" font-weight="500">Project Image Placeholder (800x400)</text>
+</svg>

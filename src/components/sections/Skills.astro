@@ -1,0 +1,85 @@
+---
+import { NeuCard } from "../skeuomorphic/NeuCard";
+
+const skillCategories = [
+  {
+    title: "Frontend",
+    icon: "💻",
+    skills: [
+      "React",
+      "TypeScript",
+      "Astro",
+      "Next.js",
+      "Tailwind CSS",
+      "Vue.js",
+    ],
+  },
+  {
+    title: "Backend",
+    icon: "⚙️",
+    skills: [
+      "Node.js",
+      "Python",
+      "PostgreSQL",
+      "MongoDB",
+      "GraphQL",
+      "REST APIs",
+    ],
+  },
+  {
+    title: "Design",
+    icon: "🎨",
+    skills: [
+      "Figma",
+      "Adobe XD",
+      "UI/UX",
+      "Prototyping",
+      "Design Systems",
+      "Responsive Design",
+    ],
+  },
+  {
+    title: "Tools & Others",
+    icon: "🛠️",
+    skills: ["Git", "Docker", "CI/CD", "AWS", "Testing", "Agile"],
+  },
+];
+---
+
+<section id="skills" class="min-h-screen py-20 px-4 bg-gradient-to-b from-neubg-light to-neubg">
+  <div class="max-w-6xl mx-auto">
+    <h2
+      class="text-4xl md:text-5xl font-display font-bold text-center mb-4 text-gray-800"
+    >
+      Skills & Expertise
+    </h2>
+    <div
+      class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-4 rounded-full shadow-neu-sm"
+    >
+    </div>
+    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+      A comprehensive toolkit of technologies and skills I use to bring ideas
+      to life.
+    </p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        skillCategories.map((category) => (
+          <NeuCard hoverable client:load>
+            <div class="text-4xl mb-4 text-center">{category.icon}</div>
+            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">
+              {category.title}
+            </h3>
+            <div class="space-y-2">
+              {category.skills.map((skill) => (
+                <div class="px-3 py-2 bg-white rounded-lg shadow-neu-sm text-center text-gray-700 text-sm">
+                  {skill}
+                </div>
+              ))}
+            </div>
+          </NeuCard>
+        ))
+      }
+    </div>
+  </div>
+</section>
