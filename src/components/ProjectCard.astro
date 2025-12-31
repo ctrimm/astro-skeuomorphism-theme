@@ -14,12 +14,13 @@ const { title, description, techStack, imageUrl, projectUrl } = Astro.props;
   <div
     class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden shadow-skeuo-raised transition-all duration-300 hover:shadow-skeuo-deep hover:-translate-y-2"
   >
-    <!-- Image Container -->
-    <div class="relative overflow-hidden h-48">
+    <!-- Image Container with 16:9 aspect ratio -->
+    <div class="relative overflow-hidden aspect-video bg-gradient-to-br from-gray-100 to-gray-200">
       <img
         src={imageUrl}
         alt={title}
         class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+        loading="lazy"
       />
       <!-- Subtle gradient overlay -->
       <div
