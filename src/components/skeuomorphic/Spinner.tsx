@@ -1,3 +1,4 @@
+import React from "react";
 import { cn } from "@/lib/utils";
 
 interface SpinnerProps {
@@ -26,42 +27,30 @@ export const SkeuoSpinner = ({
   return (
     <div
       className={cn(
-        "relative rounded-full bg-neubg shadow-neu-inset p-2",
+        "relative rounded-full bg-[#050505] shadow-[inset_0_4px_10px_rgba(0,0,0,1)] border border-gray-800 p-2 overflow-hidden flex items-center justify-center",
         sizeMap[size],
         className
       )}
       role="status"
       aria-label="Loading"
     >
-      {/* Spinning element */}
-      <div className="absolute inset-2 rounded-full animate-spin">
-        {/* Gradient arc */}
+      <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none mix-blend-overlay"></div>
+      {/* Spinning container */}
+      <div className="absolute inset-0 flex items-center justify-center animate-spin">
+        {/* LED Ring */}
         <div
-          className={cn(
-            "w-full h-full rounded-full bg-gradient-to-tr shadow-skeuo-raised",
-            colorMap[color]
-          )}
-          style={{
-            background: `conic-gradient(from 0deg, transparent 0%, transparent 50%, currentColor 50%, currentColor 100%)`,
-            maskImage: "radial-gradient(transparent 40%, black 40%)",
-            WebkitMaskImage: "radial-gradient(transparent 40%, black 40%)",
-          }}
+          className="absolute inset-2 rounded-full border-[4px] border-[#111] shadow-[inset_0_2px_4px_rgba(0,0,0,1)]"
         />
+        {/* Glowing Head */}
+        <div className="absolute top-2 w-[10px] h-[10px] rounded-full overflow-visible">
+            <div className={cn("w-full h-full rounded-full shadow-[0_0_12px_currentColor]", `bg-${color}-500`, `text-${color}-500`)}></div>
+        </div>
       </div>
 
       {/* Center cap */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-1/3 h-1/3 rounded-full bg-gradient-to-br from-gray-200 to-gray-400 shadow-neu" />
+      <div className="relative z-10 w-1/2 h-1/2 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 shadow-[0_4px_8px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.3)] border border-black flex items-center justify-center">
+         <div className="w-2 h-[1px] bg-black shadow-[0_1px_0_rgba(255,255,255,0.1)] -rotate-45" />
       </div>
-
-      {/* Glowing effect */}
-      <div
-        className={cn(
-          "absolute inset-0 rounded-full blur-sm opacity-50 animate-pulse",
-          `bg-gradient-to-tr ${colorMap[color]}`
-        )}
-        style={{ zIndex: -1 }}
-      />
     </div>
   );
 };

@@ -1,5 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { useSkeuoSound } from "@/hooks/use-skeuo-sound";
 
 interface KnobProps {
   min?: number;
@@ -21,6 +22,8 @@ export const SkeuoKnob = ({
   const [currentValue, setCurrentValue] = useState(value);
   const [isDragging, setIsDragging] = useState(false);
   const knobRef = useRef<HTMLDivElement>(null);
+  const { play } = useSkeuoSound();
+  const lastSoundValue = useRef(value);
 
   // Calculate rotation angle (270 degrees total, -135 to +135)
   const angle = ((currentValue - min) / (max - min)) * 270 - 135;
@@ -68,8 +71,16 @@ export const SkeuoKnob = ({
     const percentage = (clampedAngle + 135) / 270;
     const newValue = Math.round(min + percentage * (max - min));
 
-    setCurrentValue(newValue);
-    onChange?.(newValue);
+    if (newValue !== currentValue) {
+      setCurrentValue(newValue);
+      onChange?.(newValue);
+
+      // Play click sound on value change, throttled slightly or just every step
+      if (Math.abs(newValue - lastSoundValue.current) >= 1) {
+        play("click", 0.3); // Quieter click for knob
+        lastSoundValue.current = newValue;
+      }
+    }
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -103,98 +114,98 @@ export const SkeuoKnob = ({
 
   return (
     <div className={cn("flex flex-col items-center gap-3", className)}>
-      <div
-        ref={knobRef}
-        className={cn(
-          "relative w-28 h-28 rounded-full bg-neubg shadow-neu-lg cursor-pointer select-none transition-shadow duration-200",
-          isDragging && "shadow-neu-xl"
-        )}
-        onMouseDown={handleMouseDown}
-        role="slider"
-        aria-valuemin={min}
-        aria-valuemax={max}
-        aria-valuenow={currentValue}
-        aria-label={label}
-        tabIndex={0}
-      >
-        {/* Outer ring with enhanced grooves */}
-        <div className="absolute inset-0 rounded-full shadow-neu-inset">
-          {[...Array(24)].map((_, i) => {
-            const markerAngle = (i / 24) * 360;
-            const isInRange = markerAngle <= 135 || markerAngle >= 225;
-            return (
-              <div
-                key={i}
-                className={cn(
-                  "absolute w-0.5 h-3 rounded-full transition-all duration-200",
-                  isInRange ? "bg-gray-400/40" : "bg-gray-400/10"
-                )}
-                style={{
-                  top: "8%",
-                  left: "50%",
-                  transform: `translateX(-50%) rotate(${markerAngle}deg)`,
-                  transformOrigin: "bottom center",
-                }}
-              />
-            );
-          })}
-        </div>
+      <div className="relative p-3 bg-[#1c1d1e] rounded shadow-[0_10px_20px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.05)] border border-black flex flex-col items-center justify-center gap-4">
+        <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none mix-blend-overlay"></div>
+        
+        {/* Module Screws */}
+        <div className="absolute top-1.5 left-1.5 w-1.5 h-1.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] -rotate-12"><div className="w-full h-[1px] bg-black/60"></div></div>
+        <div className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] rotate-45"><div className="w-full h-[1px] bg-black/60"></div></div>
+        <div className="absolute bottom-1.5 left-1.5 w-1.5 h-1.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] rotate-90"><div className="w-full h-[1px] bg-black/60"></div></div>
+        <div className="absolute bottom-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] rotate-180"><div className="w-full h-[1px] bg-black/60"></div></div>
 
-        {/* Center knob with metallic finish */}
-        <div className="absolute inset-3 rounded-full bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 shadow-skeuo-deep">
-          {/* Shine effect */}
-          <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/60 via-transparent to-transparent pointer-events-none" />
-
-          {/* Grip texture */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-12 h-0.5 bg-gray-400/20 rounded-full"
-                style={{
-                  transform: `rotate(${i * 22.5}deg)`,
-                }}
-              />
-            ))}
+        <div
+          ref={knobRef}
+          className={cn(
+            "relative w-28 h-28 rounded-full bg-[#050505] shadow-[inset_0_4px_10px_rgba(0,0,0,1)] border border-gray-800 cursor-pointer select-none group/knob",
+            isDragging && "shadow-[inset_0_6px_12px_rgba(0,0,0,1)]"
+          )}
+          onMouseDown={handleMouseDown}
+          role="slider"
+          aria-valuemin={min}
+          aria-valuemax={max}
+          aria-valuenow={currentValue}
+          aria-label={label}
+          tabIndex={0}
+        >
+          {/* Outer ring with enhanced grooves */}
+          <div className="absolute inset-0 rounded-full border border-transparent">
+            {[...Array(24)].map((_, i) => {
+              const markerAngle = (i / 24) * 360;
+              const isInRange = markerAngle <= 135 || markerAngle >= 225;
+              return (
+                <div
+                  key={i}
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    transform: `rotate(${markerAngle}deg)`,
+                  }}
+                >
+                  <div
+                    className={cn(
+                      "absolute top-1 left-1/2 -translate-x-1/2 w-[2px] h-2.5 rounded-full transition-all duration-200 shadow-[0_1px_0_rgba(255,255,255,0.1)]",
+                      isInRange ? "bg-gray-500" : "bg-gray-800"
+                    )}
+                  />
+                </div>
+              );
+            })}
           </div>
 
-          {/* Center cap */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-5 h-5 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 shadow-neu-inset">
-              <div className="absolute inset-1.5 rounded-full bg-gradient-to-br from-gray-400 to-gray-600" />
+          {/* Center knob */}
+          <div className="absolute inset-4 rounded-full bg-gradient-to-b from-gray-700 to-gray-900 shadow-[0_6px_12px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.3)] border border-black overflow-hidden group-hover/knob:brightness-110 transition-all">
+            {/* Grip texture */}
+            <div className="absolute inset-0 pointer-events-none">
+              {[...Array(12)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute inset-0 w-full h-full pointer-events-none"
+                  style={{
+                    transform: `rotate(${i * 15}deg)`,
+                  }}
+                >
+                  <div className="w-full h-[1px] bg-black shadow-[0_1px_0_rgba(255,255,255,0.1)] absolute top-1/2 left-0 -translate-y-1/2" />
+                </div>
+              ))}
+            </div>
+
+            {/* Indicator line */}
+            <div
+              className="absolute inset-0 pointer-events-none z-10"
+              style={{
+                transform: `rotate(${angle}deg)`,
+              }}
+            >
+              <div className="absolute top-1 left-1/2 -translate-x-1/2 w-1.5 h-4 rounded-full bg-[#111] shadow-[inset_0_1px_2px_rgba(0,0,0,1)] border border-black/50 overflow-hidden">
+                <div className="w-full h-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)] opacity-90" />
+              </div>
             </div>
           </div>
         </div>
-
-        {/* Indicator line - MUST render last to be on top of everything */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            width: "4px",
-            height: "36px",
-            top: "50%",
-            left: "50%",
-            transformOrigin: "50% 100%",
-            transform: `translate(-50%, -100%) translateY(-6px) rotate(${angle}deg)`,
-            zIndex: 50,
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-400 to-blue-700 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)]">
-            {/* Bright highlight on indicator */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white/70 to-transparent" />
+        
+        <div className="w-full px-2">
+          {label && (
+            <div className="text-center mb-2">
+              <span className="text-[10px] font-mono tracking-widest text-gray-500 uppercase drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">{label}</span>
+            </div>
+          )}
+          <div className="flex items-center justify-between bg-[#111] px-3 py-1.5 rounded border border-gray-800 shadow-[inset_0_1px_3px_rgba(0,0,0,0.8)]">
+            <span className="text-[10px] font-mono text-gray-600">{min}</span>
+            <span className="text-xs text-blue-400 font-mono font-bold tracking-widest drop-shadow-[0_0_4px_rgba(59,130,246,0.4)]">
+              {currentValue}
+            </span>
+            <span className="text-[10px] font-mono text-gray-600">{max}</span>
           </div>
         </div>
-      </div>
-
-      {label && (
-        <span className="text-sm font-medium text-gray-700">{label}</span>
-      )}
-      <div className="flex items-center gap-2">
-        <span className="text-xs text-gray-400">{min}</span>
-        <span className="text-base text-gray-800 font-mono font-bold min-w-[3ch] text-center">
-          {currentValue}
-        </span>
-        <span className="text-xs text-gray-400">{max}</span>
       </div>
     </div>
   );

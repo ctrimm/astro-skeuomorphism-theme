@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 interface LevelMeterProps {
@@ -52,28 +52,32 @@ export const SkeuoLevelMeter = ({
   const getSegmentColor = (index: number) => {
     const percentage = (index / segments) * 100;
 
-    if (percentage > 85) return "bg-gradient-to-t from-red-600 to-red-500 shadow-[0_0_8px_rgba(220,38,38,0.6)]";
-    if (percentage > 70) return "bg-gradient-to-t from-orange-500 to-yellow-500 shadow-[0_0_6px_rgba(249,115,22,0.4)]";
-    if (percentage > 50) return "bg-gradient-to-t from-yellow-400 to-yellow-300 shadow-[0_0_4px_rgba(250,204,21,0.3)]";
-    return "bg-gradient-to-t from-green-500 to-green-400 shadow-[0_0_4px_rgba(34,197,94,0.3)]";
+    if (percentage > 85) return "bg-gradient-to-t from-red-500 to-red-400 shadow-[0_0_10px_rgba(239,68,68,0.8),inset_0_1px_2px_rgba(255,255,255,0.6)]";
+    if (percentage > 70) return "bg-gradient-to-t from-orange-500 to-yellow-400 shadow-[0_0_8px_rgba(249,115,22,0.6),inset_0_1px_2px_rgba(255,255,255,0.6)]";
+    if (percentage > 50) return "bg-gradient-to-t from-yellow-400 to-yellow-300 shadow-[0_0_6px_rgba(250,204,21,0.5),inset_0_1px_2px_rgba(255,255,255,0.6)]";
+    return "bg-gradient-to-t from-green-500 to-green-400 shadow-[0_0_6px_rgba(34,197,94,0.5),inset_0_1px_2px_rgba(255,255,255,0.6)]";
   };
 
   return (
     <div className={cn("flex flex-col items-center gap-3", className)}>
-      {label && (
-        <span className="text-sm font-medium text-gray-700">{label}</span>
-      )}
-
       <div
         className={cn(
-          "bg-gradient-to-br from-gray-800 to-gray-900 shadow-skeuo-deep rounded-2xl p-3",
-          orientation === "vertical" ? "w-16" : "h-16 w-full max-w-xs"
+          "bg-[#1c1d1e] shadow-[0_15px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.05)] border border-black rounded p-4 relative overflow-hidden",
+          orientation === "vertical" ? "w-20" : "h-20 w-full max-w-xs"
         )}
       >
+        <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none mix-blend-overlay"></div>
+        
+        {/* Module Screws */}
+        <div className="absolute top-1.5 left-1.5 w-1.5 h-1.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] -rotate-12"><div className="w-full h-[1px] bg-black/60"></div></div>
+        <div className="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] rotate-45"><div className="w-full h-[1px] bg-black/60"></div></div>
+        <div className="absolute bottom-1.5 left-1.5 w-1.5 h-1.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] rotate-90"><div className="w-full h-[1px] bg-black/60"></div></div>
+        <div className="absolute bottom-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] rotate-180"><div className="w-full h-[1px] bg-black/60"></div></div>
+
         {/* Meter housing */}
         <div
           className={cn(
-            "bg-gradient-to-br from-gray-900 to-black shadow-inner rounded-xl p-1 flex gap-1",
+            "relative z-10 bg-[#050505] shadow-[inset_0_4px_10px_rgba(0,0,0,1)] border border-gray-800 rounded p-1.5 flex gap-1",
             orientation === "vertical" ? "flex-col-reverse h-48" : "flex-row h-full"
           )}
         >
@@ -83,16 +87,16 @@ export const SkeuoLevelMeter = ({
               <div
                 key={index}
                 className={cn(
-                  "rounded-sm transition-all duration-150",
+                  "rounded-sm transition-all duration-150 border border-black/50",
                   orientation === "vertical" ? "h-full w-full" : "w-full h-full",
                   isActive
                     ? getSegmentColor(index)
-                    : "bg-gray-800/50 shadow-inner"
+                    : "bg-[#111] shadow-[inset_0_2px_4px_rgba(0,0,0,1)]"
                 )}
               >
                 {/* Shine effect on active segments */}
                 {isActive && (
-                  <div className="w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent rounded-t-sm" />
+                  <div className="w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent rounded-t-sm mix-blend-overlay" />
                 )}
               </div>
             );
@@ -101,19 +105,25 @@ export const SkeuoLevelMeter = ({
 
         {/* Peak indicators */}
         {orientation === "vertical" && (
-          <div className="absolute -right-2 top-3 flex flex-col gap-2">
-            <div className="w-1 h-1 rounded-full bg-red-500 shadow-sm" />
-            <div className="w-1 h-1 rounded-full bg-yellow-500 shadow-sm" />
-            <div className="w-1 h-1 rounded-full bg-green-500 shadow-sm" />
+          <div className="absolute right-2 top-6 flex flex-col gap-2 z-10">
+            <div className="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.8)] border border-black/50" />
+            <div className="w-1.5 h-1.5 rounded-full bg-yellow-500 shadow-[0_0_6px_rgba(234,179,8,0.6)] border border-black/50" />
+            <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_4px_rgba(34,197,94,0.4)] border border-black/50" />
           </div>
         )}
       </div>
 
-      {/* Value display */}
-      <div className="px-3 py-1 rounded-lg bg-gradient-to-b from-gray-900 to-black shadow-neu-inset">
-        <span className="text-sm font-mono font-bold text-green-400">
-          {Math.round(currentValue)}
-        </span>
+      <div className="w-full flex items-center justify-between px-2">
+        {label && (
+          <span className="text-[10px] font-mono tracking-widest text-gray-500 uppercase drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">{label}</span>
+        )}
+        {/* Value display */}
+        <div className="px-3 py-1 rounded bg-[#050505] shadow-[inset_0_4px_10px_rgba(0,0,0,1)] border border-gray-800 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+          <span className="text-xs font-mono font-bold text-green-400 drop-shadow-[0_0_6px_rgba(74,222,128,0.8)] relative z-10">
+            {Math.round(currentValue)}
+          </span>
+        </div>
       </div>
     </div>
   );

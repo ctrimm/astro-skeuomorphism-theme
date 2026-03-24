@@ -132,14 +132,120 @@
   transform: translateY(0);
 }
 
+/* Noise Texture */
+.bg-noise {
+  position: relative;
+}
+.bg-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* CRT Monitor Effect */
+.crt {
+  position: relative;
+}
+.crt::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 20;
+  background-size: 100% 4px, 3px 100%;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+@keyframes crtFlicker {
+  0% { opacity: 0.98; }
+  5% { opacity: 0.85; }
+  10% { opacity: 0.98; }
+  15% { opacity: 1; }
+  50% { opacity: 0.98; }
+  53% { opacity: 0.7; }
+  55% { opacity: 0.98; }
+  60% { opacity: 1; }
+  80% { opacity: 0.95; }
+  81% { opacity: 0.6; }
+  82% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.crt-animate {
+  animation: crtFlicker 4s infinite;
+}
+
+.crt-animate-fast {
+  animation: crtFlicker 1.5s infinite;
+}
+
+.crt-animate-slow {
+  animation: crtFlicker 8s infinite;
+}
+
+
+/* Premium Textures */
+.bg-brushed-metal {
+  background: 
+    linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.1) 100%),
+    repeating-linear-gradient(45deg, transparent, transparent 1px, rgba(0,0,0,0.03) 1px, rgba(0,0,0,0.03) 2px),
+    var(--neu-bg, #d1d9e6);
+}
+
+.dark .bg-brushed-metal {
+  background: 
+    linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(0,0,0,0.3) 100%),
+    repeating-linear-gradient(45deg, transparent, transparent 1px, rgba(0,0,0,0.08) 1px, rgba(0,0,0,0.08) 2px),
+    #2a2a2a;
+}
+
+.bg-matte-plastic {
+  background: 
+    linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(0,0,0,0.15) 100%),
+    #1f2937;
+}
+
+.light .bg-matte-plastic {
+  background: 
+    linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.05) 100%),
+    #e5e7eb;
+}
+
+/* Premium Etched Typography */
+.text-etched {
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.4), 0 1px 1px rgba(255,255,255,0.6);
+}
+
+.dark .text-etched {
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.8), 0 1px 1px rgba(255,255,255,0.2);
+}
+
+.text-etched-inset {
+  text-shadow: 0 1px 1px rgba(0,0,0,0.6), 0 -1px 1px rgba(255,255,255,0.3);
+}
+
+.dark .text-etched-inset {
+  text-shadow: 0 1px 1px rgba(0,0,0,0.9), 0 -1px 1px rgba(255,255,255,0.1);
+}
+
+
 /* Testimonial card hover effect */
 .testimonial-card {
   transition: all 0.3s ease;
 }
 
 .testimonial-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 
+    8px 8px 16px rgba(0,0,0,0.1), 
+    -8px -8px 16px rgba(255,255,255,0.8),
+    inset -2px -2px 4px rgba(0,0,0,0.02);
 }
 
 /* Image slider dots */

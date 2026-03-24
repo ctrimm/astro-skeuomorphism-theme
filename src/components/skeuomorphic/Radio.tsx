@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface RadioOption {
@@ -35,17 +35,16 @@ export const SkeuoRadio = ({
         return (
           <label
             key={option.value}
-            className="flex items-center gap-3 cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer group/radio"
           >
             <div
               className={cn(
-                "relative w-6 h-6 rounded-full transition-all duration-200",
-                isSelected
-                  ? "bg-gradient-to-br from-blue-400 to-blue-600 shadow-skeuo-raised"
-                  : "bg-neubg shadow-neu-inset"
+                "relative w-6 h-6 rounded-full bg-[#050505] shadow-[inset_0_4px_10px_rgba(0,0,0,1)] border border-gray-800 transition-all duration-200 overflow-hidden flex items-center justify-center",
+                isSelected && "border-blue-500/50 shadow-[inset_0_4px_10px_rgba(0,0,0,1),0_0_8px_rgba(59,130,246,0.3)]"
               )}
               onClick={() => handleSelect(option.value)}
             >
+              <div className="absolute inset-0 bg-noise opacity-30 pointer-events-none mix-blend-overlay"></div>
               <input
                 type="radio"
                 name={name}
@@ -55,10 +54,10 @@ export const SkeuoRadio = ({
                 className="sr-only"
               />
               {isSelected && (
-                <div className="absolute inset-2 rounded-full bg-white shadow-sm" />
+                <div className="relative z-10 w-2.5 h-2.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
               )}
             </div>
-            <span className="text-gray-800 font-medium select-none">
+            <span className="text-gray-400 font-mono text-sm tracking-widest uppercase group-hover/radio:text-gray-300 transition-colors select-none">
               {option.label}
             </span>
           </label>

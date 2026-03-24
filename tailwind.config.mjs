@@ -63,18 +63,12 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        // Neumorphic shadows
-        "neu-sm": "2px 2px 4px rgba(0,0,0,0.1), -2px -2px 4px rgba(255,255,255,0.8)",
-        "neu": "4px 4px 8px rgba(0,0,0,0.1), -4px -4px 8px rgba(255,255,255,0.8)",
-        "neu-lg": "8px 8px 16px rgba(0,0,0,0.1), -8px -8px 16px rgba(255,255,255,0.8)",
-        "neu-xl": "12px 12px 24px rgba(0,0,0,0.12), -12px -12px 24px rgba(255,255,255,0.9)",
-        "neu-inset": "inset 2px 2px 4px rgba(0,0,0,0.1), inset -2px -2px 4px rgba(255,255,255,0.8)",
-        "neu-inset-lg": "inset 4px 4px 8px rgba(0,0,0,0.1), inset -4px -4px 8px rgba(255,255,255,0.8)",
-        // Skeuomorphic shadows
-        "skeuo-soft": "0 2px 4px rgba(0,0,0,0.05), 0 4px 8px rgba(0,0,0,0.05)",
-        "skeuo-raised": "0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08)",
-        "skeuo-deep": "0 10px 20px rgba(0,0,0,0.15), 0 6px 6px rgba(0,0,0,0.1)",
-        "skeuo-lifted": "0 8px 16px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.08)",
+        // Premium Skeuomorphic Shadows
+        "premium-flat": "0 1px 2px 0 rgba(0, 0, 0, 0.2), inset 0 1px 0px 0 rgba(255, 255, 255, 0.3)",
+        "premium-raised": "0 4px 8px -2px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2), inset 0 1px 1px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.1)",
+        "premium-pressed": "inset 0 2px 6px 0 rgba(0, 0, 0, 0.5), inset 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 0px rgba(255, 255, 255, 0.1)",
+        "premium-dial": "0 10px 20px -5px rgba(0, 0, 0, 0.6), 0 6px 12px -3px rgba(0, 0, 0, 0.4), inset 0 1px 2px 0 rgba(255, 255, 255, 0.5)",
+        "premium-inset": "inset 0 6px 12px -3px rgba(0, 0, 0, 0.6), inset 0 2px 4px -1px rgba(0, 0, 0, 0.4), 0 1px 1px 0 rgba(255, 255, 255, 0.2)",
       },
       backdropBlur: {
         glass: "12px",

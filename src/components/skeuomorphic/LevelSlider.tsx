@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 interface LevelSliderProps {
@@ -82,34 +82,37 @@ export const SkeuoLevelSlider = ({
 
   return (
     <div className={cn("flex flex-col items-center gap-3", className)}>
-      {label && (
-        <span className="text-sm font-medium text-gray-700">{label}</span>
-      )}
+      <div className="relative bg-[#1c1d1e] shadow-[0_15px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.05)] border border-black rounded p-5 overflow-hidden">
+        <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none mix-blend-overlay"></div>
+        {/* Module Screws */}
+        <div className="absolute top-2 left-2 w-1.5 h-1.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] -rotate-12"><div className="w-full h-[1px] bg-black/60"></div></div>
+        <div className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] rotate-45"><div className="w-full h-[1px] bg-black/60"></div></div>
+        <div className="absolute bottom-2 left-2 w-1.5 h-1.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] rotate-90"><div className="w-full h-[1px] bg-black/60"></div></div>
+        <div className="absolute bottom-2 right-2 w-1.5 h-1.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] rotate-180"><div className="w-full h-[1px] bg-black/60"></div></div>
 
-      <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 shadow-skeuo-deep rounded-2xl p-4">
         {/* Track housing */}
         <div
           ref={trackRef}
-          className="relative bg-gradient-to-br from-gray-900 to-black shadow-inner rounded-xl p-1 h-56 w-16 cursor-pointer"
+          className="relative bg-[#050505] shadow-[inset_0_4px_10px_rgba(0,0,0,1)] border border-gray-800 rounded p-1.5 h-64 w-12 cursor-pointer z-10"
           onMouseDown={handleMouseDown}
         >
           {/* Segments */}
-          <div className="flex flex-col-reverse gap-1 h-full">
+          <div className="flex flex-col-reverse gap-1.5 h-full">
             {[...Array(segments)].map((_, index) => {
               const isActive = index < activeSegments;
               return (
                 <div
                   key={index}
                   className={cn(
-                    "h-full w-full rounded-sm transition-all duration-150",
+                    "h-full w-full rounded-sm transition-all duration-150 border border-black/50",
                     isActive
                       ? getSegmentColor(index)
-                      : "bg-gray-800/50 shadow-inner"
+                      : "bg-[#111] shadow-[inset_0_2px_4px_rgba(0,0,0,1)]"
                   )}
                 >
                   {/* Shine effect on active segments */}
                   {isActive && (
-                    <div className="w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent rounded-t-sm" />
+                    <div className="w-full h-1/3 bg-gradient-to-b from-white/40 to-transparent rounded-t-sm mix-blend-overlay" />
                   )}
                 </div>
               );
@@ -118,35 +121,32 @@ export const SkeuoLevelSlider = ({
 
           {/* Draggable knob */}
           <div
-            className="absolute left-1/2 -translate-x-1/2 w-20 h-8 pointer-events-none transition-all duration-100"
+            className="absolute left-1/2 -translate-x-1/2 w-20 h-10 pointer-events-none transition-all duration-100 z-20 group/sliderbox"
             style={{
-              bottom: `calc(${knobPosition}% - 16px)`,
+              bottom: `calc(${knobPosition}% - 20px)`,
             }}
           >
             {/* Knob body */}
-            <div className="relative w-full h-full rounded-xl bg-gradient-to-br from-gray-100 via-gray-200 to-gray-400 shadow-skeuo-raised">
-              {/* Top shine */}
-              <div className="absolute inset-x-2 top-1 h-2 rounded-lg bg-gradient-to-b from-white/60 to-transparent" />
-
-              {/* Grip lines */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-1">
-                {[...Array(3)].map((_, i) => (
+            <div className="relative w-full h-full rounded bg-gradient-to-b from-gray-700 to-gray-900 shadow-[0_8px_16px_rgba(0,0,0,0.8),0_4px_6px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.3)] border border-black overflow-hidden group-hover/sliderbox:brightness-110">
+              {/* Horizontal grip lines */}
+              <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 flex flex-col gap-[3px] items-center">
+                {[...Array(4)].map((_, i) => (
                   <div
                     key={i}
-                    className="w-12 h-0.5 rounded-full bg-gray-500/40"
+                    className="w-full h-px bg-black shadow-[0_1px_0_rgba(255,255,255,0.2)]"
                   />
                 ))}
               </div>
 
-              {/* Side indicators */}
-              <div className="absolute -left-1 top-1/2 -translate-y-1/2 w-1 h-3 rounded-full bg-blue-500 shadow-sm" />
-              <div className="absolute -right-1 top-1/2 -translate-y-1/2 w-1 h-3 rounded-full bg-blue-500 shadow-sm" />
+              {/* Center indicator line */}
+              <div className="absolute top-1/2 left-0 w-2 h-0.5 -translate-y-1/2 bg-blue-400 shadow-[0_0_4px_rgba(59,130,246,0.8)] border border-black/50" />
+              <div className="absolute top-1/2 right-0 w-2 h-0.5 -translate-y-1/2 bg-blue-400 shadow-[0_0_4px_rgba(59,130,246,0.8)] border border-black/50" />
             </div>
           </div>
         </div>
 
         {/* Scale markers */}
-        <div className="absolute -right-6 top-4 bottom-4 flex flex-col justify-between text-xs text-gray-500 font-mono">
+        <div className="absolute right-2 top-6 bottom-6 flex flex-col justify-between text-[10px] text-gray-500 font-mono drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] z-10">
           <span>{max}</span>
           <span>{Math.round(max * 0.75)}</span>
           <span>{Math.round(max * 0.5)}</span>
@@ -155,11 +155,17 @@ export const SkeuoLevelSlider = ({
         </div>
       </div>
 
-      {/* Value display */}
-      <div className="px-4 py-2 rounded-lg bg-gradient-to-b from-gray-900 to-black shadow-neu-inset">
-        <span className="text-base font-mono font-bold text-green-400">
-          {Math.round(currentValue)}
-        </span>
+      <div className="w-full flex items-center justify-between px-2">
+        {label && (
+          <span className="text-[10px] font-mono tracking-widest text-gray-500 uppercase drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]">{label}</span>
+        )}
+        {/* Value display */}
+        <div className="px-3 py-1 rounded bg-[#050505] shadow-[inset_0_4px_10px_rgba(0,0,0,1)] border border-gray-800 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+          <span className="text-xs font-mono font-bold text-green-400 drop-shadow-[0_0_6px_rgba(74,222,128,0.8)] relative z-10">
+            {Math.round(currentValue)}
+          </span>
+        </div>
       </div>
     </div>
   );

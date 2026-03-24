@@ -39,10 +39,13 @@ const projects = [
 ];
 ---
 
-<section id="projects" class="min-h-screen py-20 px-4 bg-neubg-light">
-  <div class="max-w-6xl mx-auto">
+<section id="projects" class="min-h-screen py-20 px-4 bg-[#121314] relative overflow-hidden">
+  <!-- Subtle metal texture overlay -->
+  <div class="absolute inset-0 bg-brushed-metal opacity-5 pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto relative z-10">
     <h2
-      class="text-4xl md:text-5xl font-display font-bold text-center mb-4 text-gray-800"
+      class="text-4xl md:text-5xl font-display font-bold text-center mb-4 text-gray-200 text-etched-inset"
     >
       Featured Projects
     </h2>

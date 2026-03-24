@@ -1,0 +1,77 @@
+---
+// CRT Overlay Component
+---
+
+<div id="crt-overlay" class="pointer-events-none fixed inset-0 z-40 hidden">
+  <div class="scanlines absolute inset-0 bg-repeat opacity-10"></div>
+  <div class="vignette absolute inset-0"></div>
+  <div class="noise absolute inset-0 opacity-[0.03]"></div>
+</div>
+
+<div id="power-off-overlay" class="fixed inset-0 z-30 bg-black transition-opacity duration-1000 ease-in-out">
+    <div class="absolute inset-0 flex items-center justify-center">
+        <div class="text-neutral-800 font-mono text-sm animate-pulse">SYSTEM OFFLINE</div>
+    </div>
+</div>
+
+<style>
+  .scanlines {
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0),
+      rgba(255,255,255,0) 50%,
+      rgba(0,0,0,0.2) 50%,
+      rgba(0,0,0,0.2)
+    );
+    background-size: 100% 4px;
+    animation: scanlineMove 10s linear infinite;
+  }
+
+  .vignette {
+    background: radial-gradient(
+      circle,
+      rgba(0,0,0,0) 60%,
+      rgba(0,0,0,0.4) 100%
+    );
+  }
+  
+  :global(html:not(.power-on)) #power-off-overlay {
+      opacity: 1;
+      pointer-events: auto;
+  }
+  
+  :global(html.power-on) #power-off-overlay {
+      opacity: 0;
+      pointer-events: none;
+  }
+
+  :global(html.power-on) #crt-overlay {
+      display: block;
+      animation: turnOn 4s ease-out forwards;
+  }
+
+  @keyframes scanlineMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+  }
+
+  @keyframes turnOn {
+    0% {
+      opacity: 0;
+      transform: scale(0.1) scaleY(0.01);
+      filter: saturate(0) brightness(5);
+    }
+    10% {
+      opacity: 1;
+      transform: scale(1) scaleY(0.01);
+    }
+    30% {
+      transform: scale(1) scaleY(1);
+      filter: saturate(1) brightness(1.5);
+    }
+    100% {
+      transform: scale(1);
+      filter: saturate(1) brightness(1);
+    }
+  }
+</style>

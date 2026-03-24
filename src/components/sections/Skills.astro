@@ -46,40 +46,76 @@ const skillCategories = [
 ];
 ---
 
-<section id="skills" class="min-h-screen py-20 px-4 bg-gradient-to-b from-neubg-light to-neubg">
-  <div class="max-w-6xl mx-auto">
+<section id="skills" class="min-h-screen py-20 px-4 bg-[#121314] relative overflow-hidden">
+  <div class="max-w-6xl mx-auto relative z-10">
     <h2
-      class="text-4xl md:text-5xl font-display font-bold text-center mb-4 text-gray-800"
+      class="text-4xl md:text-5xl font-display font-bold text-center mb-4 text-gray-200 text-etched-inset"
     >
       Skills & Expertise
     </h2>
     <div
-      class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-4 rounded-full shadow-neu-sm"
+      class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-4 rounded-full shadow-[0_0_8px_rgba(168,85,247,0.6)]"
     >
     </div>
-    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+    <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
       A comprehensive toolkit of technologies and skills I use to bring ideas
       to life.
     </p>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
       {
         skillCategories.map((category) => (
-          <NeuCard hoverable client:load>
-            <div class="text-4xl mb-4 text-center">{category.icon}</div>
-            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">
-              {category.title}
-            </h3>
-            <div class="space-y-2">
+          <div class="group relative bg-[#1c1d1e] rounded-xl shadow-[0_15px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.05)] border border-black p-6 md:p-8">
+            <!-- Modular Rack Screws -->
+            <div class="absolute top-4 left-4 w-2.5 h-2.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_3px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] flex items-center justify-center -rotate-45">
+              <div class="w-full h-[1px] bg-black/60"></div>
+            </div>
+            <div class="absolute top-4 right-4 w-2.5 h-2.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_3px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] flex items-center justify-center rotate-12">
+              <div class="w-full h-[1px] bg-black/60"></div>
+            </div>
+            <div class="absolute bottom-4 left-4 w-2.5 h-2.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_3px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] flex items-center justify-center rotate-90">
+              <div class="w-full h-[1px] bg-black/60"></div>
+            </div>
+            <div class="absolute bottom-4 right-4 w-2.5 h-2.5 rounded-full bg-zinc-500 shadow-[inset_1px_1px_3px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)] flex items-center justify-center -rotate-12">
+              <div class="w-full h-[1px] bg-black/60"></div>
+            </div>
+
+            <!-- Header -->
+            <div class="flex items-center gap-4 mb-6 border-b border-gray-700/50 pb-4 ml-6 mr-6">
+              <div class="text-3xl filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">{category.icon}</div>
+              <h3 class="text-xl font-bold text-gray-300 text-etched-inset flex-1 uppercase tracking-wider font-mono">
+                {category.title}
+              </h3>
+              <!-- Status Indicator -->
+              <div class="flex flex-col items-center gap-1">
+                <div class="w-2 h-2 rounded-full bg-red-900 shadow-[inset_0_2px_3px_rgba(0,0,0,0.8)] group-hover:bg-green-500 group-hover:shadow-[0_0_10px_#22c55e,inset_0_1px_2px_rgba(255,255,255,0.5)] transition-all duration-500 border border-black"></div>
+                <span class="text-[7px] text-gray-500 font-mono">ACT</span>
+              </div>
+            </div>
+
+            <!-- Switches Panel -->
+            <div class="grid grid-cols-2 gap-3 px-2">
               {category.skills.map((skill) => (
-                <div class="px-3 py-2 bg-white rounded-lg shadow-neu-sm text-center text-gray-700 text-sm">
-                  {skill}
+                <div class="px-3 py-2 bg-gradient-to-b from-[#2a2b2c] to-[#1e1f20] rounded border border-black shadow-[inset_0_1px_0_rgba(255,255,255,0.1),0_3px_5px_rgba(0,0,0,0.5)] flex items-center gap-3 cursor-default active:translate-y-[2px] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.5),0_0_0_rgba(0,0,0,0)] transition-all duration-75 child-active:bg-orange-500">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#111] shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)] indicator-led border border-gray-800"></span>
+                  <span class="text-xs font-mono font-medium text-gray-400 skill-label">{skill}</span>
                 </div>
               ))}
             </div>
-          </NeuCard>
+          </div>
         ))
       }
     </div>
+    <style>
+      /* CSS to simulate tactile active state on the entire button triggering the inner LED */
+      div:active > .indicator-led {
+         background-color: #f97316;
+         box-shadow: 0 0 8px #f97316, inset 0 1px 2px rgba(255,255,255,0.5);
+      }
+      div:active > .skill-label {
+         color: #e5e7eb;
+         text-shadow: 0 0 4px rgba(255,255,255,0.3);
+      }
+    </style>
   </div>
 </section>

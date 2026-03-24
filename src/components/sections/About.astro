@@ -4,61 +4,93 @@ import { NeuCard } from "../skeuomorphic/NeuCard";
 const base = import.meta.env.BASE_URL;
 ---
 
-<section id="about" class="min-h-screen py-20 px-4 bg-gradient-to-b from-neubg to-neubg-light">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-4xl md:text-5xl font-display font-bold text-center mb-4 text-gray-800">
+<section id="about" class="min-h-screen py-20 px-4 bg-gradient-to-b from-[#181a1b] to-[#121314] relative overflow-hidden">
+  <!-- Subtle metal texture overlay -->
+  <div class="absolute inset-0 bg-brushed-metal opacity-5 pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto relative z-10">
+    <h2 class="text-4xl md:text-5xl font-display font-bold text-center mb-4 text-gray-200 text-etched-inset">
       About Me
     </h2>
     <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-12 rounded-full shadow-neu-sm"></div>
 
     <div class="grid md:grid-cols-2 gap-8 items-center">
-      <!-- Profile Image -->
+      <!-- Profile Image Monitor -->
       <div class="flex justify-center">
-        <div class="relative">
-          <div class="w-64 h-64 md:w-80 md:h-80 rounded-3xl shadow-skeuo-deep overflow-hidden bg-gradient-to-br from-blue-400 to-purple-500 p-1">
+        <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.8),inset_0_2px_4px_rgba(255,255,255,0.3)] bg-brushed-metal p-5 border border-gray-500 border-t-gray-300">
+          <!-- Mounting Screws -->
+          <div class="absolute top-3 left-3 w-2 h-2 rounded-full bg-zinc-400 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.5),1px_1px_0_rgba(255,255,255,0.2)]"></div>
+          <div class="absolute top-3 right-3 w-2 h-2 rounded-full bg-zinc-400 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.5),1px_1px_0_rgba(255,255,255,0.2)]"></div>
+          <div class="absolute bottom-3 left-3 w-2 h-2 rounded-full bg-zinc-400 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.5),1px_1px_0_rgba(255,255,255,0.2)]"></div>
+          <div class="absolute bottom-3 right-3 w-2 h-2 rounded-full bg-zinc-400 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.5),1px_1px_0_rgba(255,255,255,0.2)]"></div>
+
+          <!-- Screen Recess -->
+          <div class="w-full h-full rounded-2xl overflow-hidden shadow-premium-inset bg-[#050505] relative border border-gray-700/50 crt crt-animate">
+            <!-- Glass glare -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 pointer-events-none z-30"></div>
+            
             <img
               src={`${base}/images/placeholder-profile.svg`}
               alt="Profile photo of Alex Morgan"
-              class="w-full h-full rounded-3xl object-cover bg-neubg"
+              class="w-full h-full object-cover mix-blend-luminosity opacity-80 contrast-125 sepia-[0.2] hue-rotate-180"
               loading="lazy"
             />
+            
+            <!-- Monitor Badge -->
+            <div class="absolute bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-black/80 rounded border border-gray-800 text-[8px] font-mono text-gray-500 tracking-widest z-30">
+              SYS_CAM_01
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Bio -->
+      <!-- Bio Panel -->
       <div class="space-y-6">
-        <NeuCard client:load>
-          <p class="text-gray-700 leading-relaxed mb-4">
-            Hello! I'm Alex Morgan, a passionate full-stack developer and UI/UX designer based in San Francisco.
-            With over 5 years of experience in the tech industry, I specialize in creating beautiful,
-            user-centered digital experiences that combine aesthetic appeal with functional excellence.
-          </p>
-          <p class="text-gray-700 leading-relaxed mb-4">
-            My journey in web development started with a fascination for how design and code come together
-            to create meaningful interactions. Today, I work with cutting-edge technologies like React,
-            TypeScript, and modern CSS frameworks to build responsive, accessible, and performant applications.
-          </p>
-          <p class="text-gray-700 leading-relaxed">
-            When I'm not coding, you'll find me exploring the latest design trends, contributing to open-source
-            projects, or enjoying the vibrant tech community here in the Bay Area.
-          </p>
-        </NeuCard>
+        <div class="relative bg-matte-plastic rounded-2xl p-8 shadow-premium-raised border border-gray-600 border-t-gray-400 overflow-hidden">
+          <!-- Texture overlay -->
+          <div class="absolute inset-0 bg-noise opacity-30 pointer-events-none mix-blend-overlay"></div>
+          
+          <div class="relative z-10">
+            <!-- Manufacturer Label -->
+            <div class="flex items-center gap-2 mb-6 border-b border-gray-700/50 pb-3">
+              <div class="w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_8px_#ef4444,inset_0_1px_2px_rgba(0,0,0,0.5)]"></div>
+              <span class="text-[10px] font-mono font-bold text-gray-400 tracking-widest">PERSONAL_DATA_UNIT_MKII</span>
+            </div>
 
-        <!-- Quick Stats -->
-        <div class="grid grid-cols-3 gap-4" role="list" aria-label="Professional statistics">
-          <NeuCard variant="pressed" className="text-center" client:load>
-            <div class="text-3xl font-bold text-blue-600 mb-1" aria-label="5 plus">5+</div>
-            <div class="text-sm text-gray-700">Years</div>
-          </NeuCard>
-          <NeuCard variant="pressed" className="text-center" client:load>
-            <div class="text-3xl font-bold text-purple-600 mb-1" aria-label="50 plus">50+</div>
-            <div class="text-sm text-gray-700">Projects</div>
-          </NeuCard>
-          <NeuCard variant="pressed" className="text-center" client:load>
-            <div class="text-3xl font-bold text-green-600 mb-1" aria-label="100 percent">100%</div>
-            <div class="text-sm text-gray-700">Passion</div>
-          </NeuCard>
+            <p class="text-gray-300 leading-relaxed mb-4 font-medium">
+              Hello! I'm Alex Morgan, a passionate full-stack developer and UI/UX designer based in San Francisco.
+              With over 5 years of experience in the tech industry, I specialize in creating beautiful,
+              user-centered digital experiences that combine aesthetic appeal with functional excellence.
+            </p>
+            <p class="text-gray-300 leading-relaxed mb-4">
+              My journey in web development started with a fascination for how design and code come together
+              to create meaningful interactions. Today, I work with cutting-edge technologies like React,
+              TypeScript, and modern CSS frameworks to build responsive, accessible, and performant applications.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+              When I'm not coding, you'll find me exploring the latest design trends, contributing to open-source
+              projects, or enjoying the vibrant tech community here in the Bay Area.
+            </p>
+          </div>
+        </div>
+
+        <!-- LCD Stats Array -->
+        <div class="grid grid-cols-3 gap-4 p-3 bg-zinc-800 rounded-xl shadow-premium-inset border-b border-white/10" role="list" aria-label="Professional statistics">
+          <div class="relative bg-[#050505] rounded-lg p-4 shadow-[inset_0_4px_10px_rgba(0,0,0,1)] border border-gray-800 flex flex-col items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none z-20"></div>
+            <div class="text-4xl font-mono text-green-400 font-bold drop-shadow-[0_0_8px_#4ade80] z-10">05</div>
+            <div class="mt-1 text-[9px] text-green-600/80 font-mono tracking-widest z-10 uppercase">Years Exp</div>
+          </div>
+          <div class="relative bg-[#050505] rounded-lg p-4 shadow-[inset_0_4px_10px_rgba(0,0,0,1)] border border-gray-800 flex flex-col items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none z-20"></div>
+            <div class="text-4xl font-mono text-blue-400 font-bold drop-shadow-[0_0_8px_#60a5fa] z-10">50</div>
+            <div class="mt-1 text-[9px] text-blue-600/80 font-mono tracking-widest z-10 uppercase">Projects</div>
+          </div>
+          <div class="relative bg-[#050505] rounded-lg p-4 shadow-[inset_0_4px_10px_rgba(0,0,0,1)] border border-gray-800 flex flex-col items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none z-20"></div>
+            <div class="text-4xl font-mono text-red-400 font-bold drop-shadow-[0_0_8px_#f87171] z-10">99</div>
+            <div class="mt-1 text-[9px] text-red-600/80 font-mono tracking-widest z-10 uppercase">Uptime %</div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface PadButton {
@@ -50,12 +50,13 @@ export const SkeuoPad = ({
   return (
     <div
       className={cn(
-        "relative p-6 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 shadow-skeuo-deep",
+        "relative p-6 rounded bg-[#1c1d1e] shadow-[0_15px_30px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.05)] border border-black overflow-hidden",
         className
       )}
     >
-      <div
-        className="grid gap-4"
+      <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none mix-blend-overlay"></div>
+      
+      <div className="relative z-10 grid gap-4 p-4 bg-[#050505] rounded shadow-[inset_0_4px_10px_rgba(0,0,0,1)] border border-gray-800"
         style={{ gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }}
       >
         {buttons.map((button) => {
@@ -65,27 +66,30 @@ export const SkeuoPad = ({
               key={button.id}
               onClick={() => handlePress(button.id)}
               className={cn(
-                "relative aspect-square rounded-2xl transition-all duration-150",
+                "relative aspect-square rounded transition-all duration-150 overflow-hidden",
                 "min-w-20 min-h-20 md:min-w-24 md:min-h-24",
-                "bg-gradient-to-br shadow-skeuo-raised",
-                "active:shadow-neu-inset active:translate-y-0.5",
-                "focus:outline-none focus:ring-2 focus:ring-white/50",
-                isActive && "shadow-neu-inset translate-y-0.5",
-                getButtonColor(button.color)
+                "bg-[#111] shadow-[inset_0_1px_3px_rgba(0,0,0,1)] border border-gray-800",
+                "active:shadow-[inset_0_4px_8px_rgba(0,0,0,1)] active:border-black",
+                "focus:outline-none",
+                isActive && "shadow-[inset_0_4px_8px_rgba(0,0,0,1)] border-black"
               )}
             >
-              {/* Top shine */}
-              <div className="absolute inset-x-2 top-2 h-1/4 rounded-t-2xl bg-gradient-to-b from-white/40 to-transparent" />
+              <div className="absolute inset-0 bg-noise opacity-40 pointer-events-none mix-blend-overlay"></div>
+              {/* Top rim light */}
+              <div className="absolute inset-x-0 top-0 h-[1px] bg-white/5" />
 
               {/* Label */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white font-bold text-lg drop-shadow-lg">
+                <span className={cn("font-mono font-bold tracking-widest text-sm uppercase drop-shadow-[0_1px_1px_rgba(0,0,0,1)]", isActive ? "text-white" : "text-gray-400")}>
                   {button.label}
                 </span>
               </div>
 
-              {/* Corner LED indicator */}
-              <div className="absolute top-2 right-2 w-2 h-2 rounded-full bg-white/30 shadow-inner" />
+              {/* LED Edge */}
+              <div className={cn(
+                "absolute inset-0 rounded border-2 transition-all duration-150 pointer-events-none",
+                isActive ? `border-${button.color || 'blue'}-500 shadow-[inset_0_0_15px_currentColor]` : "border-transparent"
+              )} />
             </button>
           );
         })}
@@ -96,18 +100,14 @@ export const SkeuoPad = ({
         <div
           key={i}
           className={cn(
-            "absolute w-3 h-3 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 shadow-inner",
-            i === 0 && "top-2 left-2",
-            i === 1 && "top-2 right-2",
-            i === 2 && "bottom-2 left-2",
-            i === 3 && "bottom-2 right-2"
+            "absolute w-2 h-2 rounded-full bg-zinc-500 shadow-[inset_1px_1px_2px_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.1)]",
+            i === 0 && "top-2 left-2 -rotate-12",
+            i === 1 && "top-2 right-2 rotate-45",
+            i === 2 && "bottom-2 left-2 rotate-90",
+            i === 3 && "bottom-2 right-2 rotate-180"
           )}
         >
-          <div className="absolute inset-1 rounded-full bg-gray-700">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-2 h-0.5 bg-gray-900 rounded-full" />
-            </div>
-          </div>
+          <div className="w-full h-[1px] bg-black/60 absolute top-1/2 -translate-y-1/2"></div>
         </div>
       ))}
     </div>

@@ -1,44 +1,73 @@
 ---
 import { SkeuoButton } from "../skeuomorphic/Button";
+import { PocketPlayer } from "../skeuomorphic/PocketPlayer";
 ---
 
 <section
   id="hero"
-  class="min-h-screen flex items-center justify-center bg-neubg relative overflow-hidden"
+  class="min-h-screen flex items-center justify-center relative overflow-hidden bg-[#181a1b]"
 >
-  <!-- Subtle texture overlay -->
-  <div class="absolute inset-0 opacity-5 bg-paper-texture"></div>
+  <!-- Subtle metal texture overlay -->
+  <div class="absolute inset-0 bg-brushed-metal opacity-10 pointer-events-none"></div>
+  <div class="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/80 pointer-events-none"></div>
 
-  <div class="relative z-10 text-center max-w-4xl px-4">
-    <!-- Neumorphic name card -->
-    <div class="inline-block p-8 md:p-12 rounded-3xl shadow-neu mb-8 bg-neubg">
-      <h1
-        class="text-5xl md:text-7xl font-display font-bold bg-gradient-to-br from-gray-700 to-gray-900 bg-clip-text text-transparent mb-3"
-      >
-        Alex Morgan
-      </h1>
-      <p class="text-xl md:text-2xl text-gray-600 font-medium">
-        Full-Stack Developer & UI/UX Designer
+  <div class="relative z-10 w-full max-w-6xl px-4 flex flex-col md:flex-row items-center justify-between gap-12">
+    <!-- Hero Text (Hardware Nameplate Style) -->
+    <div class="flex-1">
+      <div class="inline-block p-8 md:p-12 rounded-3xl bg-matte-plastic shadow-premium-raised border border-gray-600 border-t-gray-500 mb-8 relative overflow-hidden">
+        <!-- Inner rim highlight -->
+        <div class="absolute inset-0 rounded-3xl border border-white/5 pointer-events-none"></div>
+        <div class="absolute inset-x-0 top-0 h-px bg-white/20"></div>
+
+        <h1
+          class="text-5xl md:text-7xl font-display font-bold text-etched-inset text-gray-200 mb-4"
+        >
+          Alex Morgan
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-400 font-medium tracking-wide">
+          Full-Stack Developer & UI/UX Designer
+        </p>
+        <p class="text-base md:text-lg text-gray-500 mt-2 font-mono uppercase tracking-widest text-etched">
+          [ San Francisco, CA ]
+        </p>
+
+        <!-- Status LEDs -->
+        <div class="absolute top-8 right-8 flex gap-3">
+          <div class="w-3 h-3 rounded-full bg-green-500 shadow-[0_0_12px_#22c55e,inset_0_2px_4px_rgba(255,255,255,0.8)] border border-black"></div>
+          <div class="w-3 h-3 rounded-full bg-red-950/80 shadow-[inset_0_3px_6px_rgba(0,0,0,0.8)] border border-black/50 border-t-black"></div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-xl leading-relaxed">
+        Crafting beautiful, tactile digital experiences with a passion for
+        modern skeuomorphism, sound design, and cutting-edge technology.
       </p>
-      <p class="text-base md:text-lg text-gray-500 mt-2">
-        San Francisco, CA
-      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-6 mt-8">
+        <a href="#projects" class="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-b from-gray-700 to-gray-900 border border-black rounded-lg shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_8px_15px_rgba(0,0,0,0.6)] active:translate-y-[4px] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.8),0_0_0_rgba(0,0,0,0)] transition-all font-mono tracking-widest uppercase text-green-400 hover:text-green-300 overflow-hidden" aria-label="View my projects">
+          <span class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></span>
+          <div class="flex items-center gap-3 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+             <span class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e,inset_0_1px_2px_rgba(255,255,255,0.8)] border border-green-900 group-active:bg-green-400 transition-colors"></span>
+             <strong>INIT_PROJECTS</strong>
+          </div>
+        </a>
+        <a href="#contact" class="group relative inline-flex items-center justify-center px-8 py-4 bg-gradient-to-b from-red-600 to-red-900 border border-black rounded-lg shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_8px_15px_rgba(0,0,0,0.6)] active:translate-y-[4px] active:shadow-[inset_0_3px_6px_rgba(0,0,0,0.8),0_0_0_rgba(0,0,0,0)] transition-all font-mono tracking-widest uppercase text-white hover:brightness-110 overflow-hidden" aria-label="Contact me">
+          <div class="absolute left-0 top-0 bottom-0 w-3 bg-gradient-to-b from-yellow-400 to-yellow-600 opacity-70 block repeating-linear-gradient-[45deg,transparent,transparent_4px,#000_4px,#000_8px]"></div>
+          <div class="flex items-center gap-3 ml-2 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+             <span class="w-2 h-2 rounded-full bg-[#111] shadow-[inset_0_1px_2px_rgba(0,0,0,1)] border border-black group-active:bg-red-400 group-active:shadow-[0_0_10px_#f87171] transition-colors flex-shrink-0"></span>
+             <strong>TRANSMIT_MSG</strong>
+          </div>
+        </a>
+      </div>
     </div>
 
-    <!-- Description -->
-    <p class="text-lg md:text-xl text-gray-700 mb-10 max-w-2xl mx-auto leading-relaxed">
-      Crafting beautiful, intuitive digital experiences with a passion for
-      modern design and cutting-edge technology.
-    </p>
-
-    <!-- CTA Buttons -->
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <SkeuoButton variant="primary" href="#projects" client:load>
-        View Projects
-      </SkeuoButton>
-      <SkeuoButton variant="raised" href="#contact" client:load>
-        Contact Me
-      </SkeuoButton>
+    <!-- Interactive Component Showcase (PocketPlayer) -->
+    <div class="flex-1 flex justify-center md:justify-end">
+        <div class="p-6 rounded-3xl bg-[#111] shadow-premium-inset border-t border-b border-gray-700/50">
+           <PocketPlayer client:load />
+        </div>
     </div>
   </div>
 
