@@ -69,10 +69,10 @@ export const PowerSwitch = () => {
                     aria-label="Master Power Switch"
                 >
                     {/* Switch Well / Recess */}
-                    <div className="absolute inset-2 rounded bg-[#111] shadow-[inset_0_4px_8px_rgba(0,0,0,0.8),inset_0_0_2px_rgba(0,0,0,1)] border-b border-white/5"></div>
+                    <span className="absolute inset-2 rounded bg-[#111] shadow-[inset_0_4px_8px_rgba(0,0,0,0.8),inset_0_0_2px_rgba(0,0,0,1)] border-b border-white/5"></span>
 
                     {/* The Actual Switch Lever */}
-                    <div
+                    <span
                         className={cn(
                             "absolute left-1/2 -translate-x-1/2 w-12 h-20 rounded-sm transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]", // Bouncy spring feel
                             "shadow-[0_4px_6px_rgba(0,0,0,0.6),0_1px_3px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.3)]",
@@ -82,28 +82,28 @@ export const PowerSwitch = () => {
                         )}
                     >
                         {/* Grip ridges */}
-                        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex flex-col gap-[3px] items-center opacity-40 px-1">
+                        <span className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex flex-col gap-[3px] items-center opacity-40 px-1">
                             {[...Array(6)].map((_, i) => (
-                                <div key={i} className="w-full h-[1px] bg-black/60 shadow-[0_1px_0_rgba(255,255,255,0.1)]"></div>
+                                <span key={i} className="w-full h-[1px] bg-black/60 shadow-[0_1px_0_rgba(255,255,255,0.1)]"></span>
                             ))}
-                        </div>
-                    </div>
+                        </span>
+                    </span>
 
                     {/* Status LED */}
-                    <div className={cn(
+                    <span className={cn(
                         "absolute top-4 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full transition-all duration-300 z-10",
                         isOn
                             ? "bg-green-400 shadow-[0_0_8px_#4ade80,0_0_12px_#4ade80]"
                             : "bg-red-900/50 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)]"
-                    )}></div>
+                    )}></span>
 
                     {/* Labels */}
-                    <div className="absolute top-8 left-1/2 -translate-x-1/2 text-[8px] font-mono text-gray-500 font-bold tracking-wider pointer-events-none select-none">
+                    <span className="absolute top-8 left-1/2 -translate-x-1/2 text-[8px] font-mono text-gray-500 font-bold tracking-wider pointer-events-none select-none">
                         ON
-                    </div>
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[8px] font-mono text-gray-500 font-bold tracking-wider pointer-events-none select-none">
+                    </span>
+                    <span className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[8px] font-mono text-gray-500 font-bold tracking-wider pointer-events-none select-none">
                         OFF
-                    </div>
+                    </span>
 
                 </button>
             </div>
