@@ -21,6 +21,23 @@ export const PocketPlayer = () => {
     const { play } = useSkeuoSound();
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
+    // Auto-advance progress when playing
+    useEffect(() => {
+        let interval: NodeJS.Timeout;
+        if (isPlaying) {
+            interval = setInterval(() => {
+                setProgress(prev => {
+                    if (prev >= 100) {
+                        // Loop to next track or just reset
+                        return 0;
+                    }
+                    return prev + 1;
+                });
+            }, 1000); // 1% per second for demonstration
+        }
+        return () => clearInterval(interval);
+    }, [isPlaying]);
+
     useEffect(() => {
         let animationFrame: number;
         let audioData = new Uint8Array(20);
@@ -82,12 +99,20 @@ export const PocketPlayer = () => {
 
     const handleNext = () => {
         setCurrentTrack((prev) => (prev + 1) % tracks.length);
+        setProgress(0);
         play("click");
     };
 
     const handlePrev = () => {
         setCurrentTrack((prev) => (prev - 1 + tracks.length) % tracks.length);
+        setProgress(0);
         play("click");
+    };
+
+    const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
+        const bounds = e.currentTarget.getBoundingClientRect();
+        const x = Math.max(0, Math.min(e.clientX - bounds.left, bounds.width));
+        setProgress(Math.round((x / bounds.width) * 100));
     };
 
     return (
@@ -115,18 +140,18 @@ export const PocketPlayer = () => {
                 {/* LCD Screen Content */}
                 <div className="font-mono text-green-400 text-xs flex flex-col gap-1 relative z-10">
                     <div className="flex justify-between bg-[#222] px-1 py-0.5 text-[10px] text-green-600/80 uppercase tracking-widest">
-                        <span>{isPlaying ? "PLAY" : "STOP"}</span> <span>128 KBPS</span> <span>44 KHZ</span>
+                        <span>{isPlaying ? "PLAY" : "STOP"}</span> <span>{"128 KBPS"}</span> <span>{"44 KHZ"}</span>
                     </div>
 
                     <div className="flex gap-2 h-16">
                         {/* Track Info (Marquee) */}
                         <div className="flex-1 overflow-hidden relative border border-green-900/30 bg-[#0a0a0a] p-1 flex flex-col justify-center">
                             <div className="whitespace-nowrap animate-marquee">
-                                {tracks[currentTrack].artist} *** {tracks[currentTrack].title} *** ({tracks[currentTrack].duration}) ***
+                                {`${tracks[currentTrack].artist} *** ${tracks[currentTrack].title} *** (${tracks[currentTrack].duration}) ***`}
                             </div>
                             {/* Time Counter */}
                             <div className="text-2xl font-bold text-green-500 mt-1 font-[digital] tracking-widest tabular-nums">
-                                00:{progress.toString().padStart(2, '0')}
+                                {`00:${progress.toString().padStart(2, '0')}`}
                             </div>
                         </div>
 
@@ -137,10 +162,19 @@ export const PocketPlayer = () => {
             </div>
 
             {/* Seek Bar */}
-            <div className="mb-5 relative h-3 bg-[#1a1a1b] rounded-full shadow-premium-inset border-b border-white/10">
-                <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-orange-600 to-yellow-500 w-[45%] shadow-[inset_0_1px_0_rgba(255,255,255,0.4)] rounded-full"></div>
+            <div 
+                className="mb-5 relative h-3 bg-[#1a1a1b] rounded-full shadow-premium-inset border-b border-white/10 cursor-pointer"
+                onClick={handleSeek}
+            >
+                <div 
+                    className="absolute inset-y-0 left-0 bg-gradient-to-r from-orange-600 to-yellow-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)] rounded-full transition-all duration-200 ease-linear"
+                    style={{ width: `${progress}%` }}
+                ></div>
                 {/* Thumb */}
-                <div className="absolute top-1/2 -translate-y-1/2 left-[45%] w-4 h-6 bg-brushed-metal rounded-sm shadow-premium-raised border border-white/30 cursor-pointer -ml-2 flex flex-col items-center justify-center p-[1px] z-10">
+                <div 
+                    className="absolute top-1/2 -translate-y-1/2 w-4 h-6 bg-brushed-metal rounded-sm shadow-premium-raised border border-white/30 cursor-pointer flex flex-col items-center justify-center p-[1px] z-10 transition-all duration-200 ease-linear"
+                    style={{ left: `calc(${progress}% - 8px)` }}
+                >
                     <div className="w-full h-[1px] bg-black/60 shadow-[0_1px_0_rgba(255,255,255,0.4)]"></div>
                     <div className="w-full h-[1px] bg-black/60 shadow-[0_1px_0_rgba(255,255,255,0.4)] mt-[1px]"></div>
                     <div className="w-full h-[1px] bg-black/60 shadow-[0_1px_0_rgba(255,255,255,0.4)] mt-[1px]"></div>
