@@ -1,7 +1,7 @@
 # Product Requirements Document: Skeuomorphic Personal Portfolio Website
 
 **Version:** 1.0  
-**Last Updated:** December 30, 2025  
+**Last Updated:** December 30, 2026  
 **Project Type:** Coding Agent Implementation  
 **Tech Stack:** Astro, shadcn/ui, Tailwind CSS
 
@@ -26,9 +26,9 @@ This PRD defines the requirements for a coding agent to create a modern skeuomor
 - Tactile, touch-friendly visual cues
 - Familiar metaphors from the physical world
 
-### 2.2 The 2025 Skeuomorphism Revival
+### 2.2 The 2026 Skeuomorphism Revival
 
-As documented in recent design trend analyses, skeuomorphism is experiencing a comeback in late 2025:
+As documented in recent design trend analyses, skeuomorphism is experiencing a comeback in late 2026:
 
 - **Modern Implementation:** Blends skeuomorphic elements with flat design principles
 - **Technology Enablers:** Ultra-high resolution displays and advanced graphics processors
@@ -74,7 +74,7 @@ The coding agent must implement these core principles:
    - Clean typography alongside tactile elements
    - Generous white space
 
-### 3.2 Example Websites (December 2025)
+### 3.2 Example Websites (December 2026)
 
 **Reference Sites from onepagelove.com/tag/skeuomorphism:**
 
@@ -101,9 +101,9 @@ The coding agent must implement these core principles:
 **Additional Inspiration Sources:**
 - **Webflow Skeuomorphism Gallery:** https://webflow.com/made-in-webflow/skeuomorphism
 - **FreeFrontend Neumorphism Examples:** https://freefrontend.com/css-neumorphism-examples/
-- **Dribbble Neumorphism Shots:** Search "neumorphism 2025"
+- **Dribbble Neumorphism Shots:** Search "neumorphism 2026"
 
-### 3.3 Design Trend Articles (Late 2025)
+### 3.3 Design Trend Articles (Late 2026)
 
 **Key References:**
 - Big Human Guide (Dec 9, 2025): https://www.bighuman.com/blog/guide-to-skeuomorphic-design-style
@@ -742,11 +742,11 @@ These features are not required for v1.0 but could be added later:
 ### Articles & Guides
 - Big Human: Complete 2026 Guide to Skeuomorphic Design (Dec 2025)
   https://www.bighuman.com/blog/guide-to-skeuomorphic-design-style
-- Kryzalid: Skeuomorphism Comeback in 2025 (Feb 2025)
+- Kryzalid: Skeuomorphism Comeback in 2026 (Feb 2025)
   https://kryzalid.net/en/web-marketing-blog/skeuomorphism-an-unexpected-comeback-in-2025/
-- TBH Creative: Web Design Trends of 2025 (Jan 2025)
+- TBH Creative: Web Design Trends of 2026 (Jan 2025)
   https://blog.tbhcreative.com/web-design-trends-of-2025/
-- JustInMind: Skeuomorphism Guide (Feb 2025)
+- JustInMind: Skeuomorphism Guide (Feb 2026)
   https://www.justinmind.com/ui-design/skeuomorphic
 
 ### Technical Documentation
@@ -896,4 +896,4 @@ const { title, description, techStack, imageUrl, projectUrl } = Astro.props;
 
 **End of PRD**
 
-*This document should be used by a coding agent to implement a complete, modern skeuomorphic personal portfolio website following 2025 design trends and best practices.*
+*This document should be used by a coding agent to implement a complete, modern skeuomorphic personal portfolio website following 2026 design trends and best practices.*

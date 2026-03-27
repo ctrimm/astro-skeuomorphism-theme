@@ -204,5 +204,5 @@ If you find an accessibility issue:
 
 ---
 
-**Last Updated:** December 31, 2025
+**Last Updated:** December 31, 2026
 **WCAG Level:** AA Compliant

@@ -1,6 +1,6 @@
 # Astro Skeuomorphism Theme
 
-A modern, beautiful skeuomorphic personal portfolio theme built with Astro, React, shadcn/ui, and Tailwind CSS. Features tactile, depth-rich design elements following 2025 skeuomorphic and neumorphic design trends.
+A modern, beautiful skeuomorphic personal portfolio theme built with Astro, React, shadcn/ui, and Tailwind CSS. Features tactile, depth-rich design elements following 2026 skeuomorphic and neumorphic design trends.
 
 ![Astro Skeuomorphism Theme](public/images/skeumorphism-preview.png)
 
