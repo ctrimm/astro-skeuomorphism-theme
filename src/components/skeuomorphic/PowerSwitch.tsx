@@ -57,22 +57,30 @@ export const PowerSwitch = () => {
                     </div>
                 </div>
 
-                <button
+                <div
+                    role="button"
+                    tabIndex={0}
                     onClick={togglePower}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            togglePower();
+                        }
+                    }}
                     className={cn(
-                        "relative w-20 h-32 rounded-lg transition-all duration-300 transform-gpu",
+                        "relative w-20 h-32 rounded-lg transition-all duration-300 transform-gpu cursor-pointer",
                         "bg-gradient-to-b from-[#2a2a2a] via-[#333] to-[#1a1a1a]",
                         "border border-[#444] border-t-[#555] border-b-[#111]",
                         "shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_0_10px_rgba(0,0,0,0.5)]",
-                        "active:scale-[0.98] focus:outline-none focus:ring-1 focus:ring-red-500/30"
+                        "active:scale-[0.98] focus:outline-none focus:ring-1 focus:ring-red-500/30 block"
                     )}
                     aria-label="Master Power Switch"
                 >
                     {/* Switch Well / Recess */}
-                    <span className="absolute inset-2 rounded bg-[#111] shadow-[inset_0_4px_8px_rgba(0,0,0,0.8),inset_0_0_2px_rgba(0,0,0,1)] border-b border-white/5"></span>
+                    <div className="absolute inset-2 rounded bg-[#111] shadow-[inset_0_4px_8px_rgba(0,0,0,0.8),inset_0_0_2px_rgba(0,0,0,1)] border-b border-white/5"></div>
 
                     {/* The Actual Switch Lever */}
-                    <span
+                    <div
                         className={cn(
                             "absolute left-1/2 -translate-x-1/2 w-12 h-20 rounded-sm transition-all duration-300 ease-[cubic-bezier(0.68,-0.55,0.265,1.55)]", // Bouncy spring feel
                             "shadow-[0_4px_6px_rgba(0,0,0,0.6),0_1px_3px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.3)]",
@@ -82,30 +90,30 @@ export const PowerSwitch = () => {
                         )}
                     >
                         {/* Grip ridges */}
-                        <span className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex flex-col gap-[3px] items-center opacity-40 px-1">
+                        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex flex-col gap-[3px] items-center opacity-40 px-1">
                             {[...Array(6)].map((_, i) => (
-                                <span key={i} className="w-full h-[1px] bg-black/60 shadow-[0_1px_0_rgba(255,255,255,0.1)]"></span>
+                                <div key={i} className="w-full h-[1px] bg-black/60 shadow-[0_1px_0_rgba(255,255,255,0.1)]"></div>
                             ))}
-                        </span>
-                    </span>
+                        </div>
+                    </div>
 
                     {/* Status LED */}
-                    <span className={cn(
+                    <div className={cn(
                         "absolute top-4 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full transition-all duration-300 z-10",
                         isOn
                             ? "bg-green-400 shadow-[0_0_8px_#4ade80,0_0_12px_#4ade80]"
                             : "bg-red-900/50 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)]"
-                    )}></span>
+                    )}></div>
 
                     {/* Labels */}
-                    <span className="absolute top-8 left-1/2 -translate-x-1/2 text-[8px] font-mono text-gray-500 font-bold tracking-wider pointer-events-none select-none">
+                    <div className="absolute top-8 left-1/2 -translate-x-1/2 text-[8px] font-mono text-gray-500 font-bold tracking-wider pointer-events-none select-none">
                         {"ON"}
-                    </span>
-                    <span className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[8px] font-mono text-gray-500 font-bold tracking-wider pointer-events-none select-none">
+                    </div>
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[8px] font-mono text-gray-500 font-bold tracking-wider pointer-events-none select-none">
                         {"OFF"}
-                    </span>
+                    </div>
 
-                </button>
+                </div>
             </div>
 
             <div className="bg-black/80 px-2 py-0.5 rounded text-[9px] font-mono tracking-widest text-red-500 border border-red-900/30 shadow-lg backdrop-blur-sm">
