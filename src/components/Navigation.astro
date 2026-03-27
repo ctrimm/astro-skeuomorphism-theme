@@ -1,11 +1,17 @@
 ---
+const base = import.meta.env.BASE_URL;
+const makeHref = (path) => {
+  const cleanBase = base === '/' ? '' : base;
+  return `${cleanBase}${path}`;
+};
+
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/#about" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Skills", href: "/#skills" },
-  { label: "Contact", href: "/#contact" },
-  { label: "Components", href: "/components" },
+  { label: "Home", href: makeHref("/") },
+  { label: "About", href: makeHref("/#about") },
+  { label: "Projects", href: makeHref("/#projects") },
+  { label: "Skills", href: makeHref("/#skills") },
+  { label: "Contact", href: makeHref("/#contact") },
+  { label: "Components", href: makeHref("/components") },
 ];
 ---
 
@@ -17,7 +23,7 @@ const navItems = [
   <div class="max-w-4xl mx-auto px-4 sm:px-12">
     <div class="flex items-center justify-between h-16 relative">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 group" aria-label="Alex Morgan - Home">
+      <a href={makeHref("/")} class="flex items-center gap-2 group" aria-label="Alex Morgan - Home">
         <div
           class="w-10 h-10 rounded-xl shadow-premium-raised flex items-center justify-center bg-matte-plastic border border-gray-600 text-gray-200 font-bold text-lg group-hover:brightness-110 transition-all duration-200"
           aria-hidden="true"
