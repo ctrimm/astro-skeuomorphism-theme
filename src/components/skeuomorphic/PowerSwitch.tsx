@@ -38,7 +38,7 @@ export const PowerSwitch = () => {
     };
 
     return (
-        <div className="fixed top-16 right-6 z-50 flex flex-col items-center gap-3 perspective-1000">
+        <div className="fixed top-24 right-6 z-50 flex flex-col items-center gap-3 perspective-1000">
             <div className="relative group">
                 {/* Switch Housing - Industrial Plastic/Metal */}
                 <div className="absolute -inset-2 rounded-xl bg-gradient-to-br from-gray-800 to-black shadow-[0_8px_16px_rgba(0,0,0,0.4),0_2px_4px_rgba(0,0,0,0.2)] border border-gray-700/50">
