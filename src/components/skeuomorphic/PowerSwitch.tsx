@@ -99,17 +99,17 @@ export const PowerSwitch = () => {
 
                     {/* Labels */}
                     <span className="absolute top-8 left-1/2 -translate-x-1/2 text-[8px] font-mono text-gray-500 font-bold tracking-wider pointer-events-none select-none">
-                        ON
+                        {"ON"}
                     </span>
                     <span className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[8px] font-mono text-gray-500 font-bold tracking-wider pointer-events-none select-none">
-                        OFF
+                        {"OFF"}
                     </span>
 
                 </button>
             </div>
 
             <div className="bg-black/80 px-2 py-0.5 rounded text-[9px] font-mono tracking-widest text-red-500 border border-red-900/30 shadow-lg backdrop-blur-sm">
-                SYSTEM POWER
+                {"SYSTEM POWER"}
             </div>
         </div>
     );
