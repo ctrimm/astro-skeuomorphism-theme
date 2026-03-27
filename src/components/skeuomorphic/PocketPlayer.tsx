@@ -99,7 +99,7 @@ export const PocketPlayer = () => {
             <div className="flex justify-between items-center mb-3">
                 <div className="text-xs font-mono font-bold text-gray-400 tracking-tighter flex items-center gap-1">
                     <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse shadow-[0_0_5px_orange]"></div>
-                    WINAMP_POCKET_v5
+                    {"WINAMP_POCKET_v5"}
                 </div>
                 <div className="flex gap-1">
                     <div className="w-8 h-1 bg-zinc-900 rounded-full shadow-inner"></div>
@@ -126,7 +126,7 @@ export const PocketPlayer = () => {
                             </div>
                             {/* Time Counter */}
                             <div className="text-2xl font-bold text-green-500 mt-1 font-[digital] tracking-widest tabular-nums">
-                                00:{Math.floor(Math.random() * 60).toString().padStart(2, '0')}
+                                00:{progress.toString().padStart(2, '0')}
                             </div>
                         </div>
 
@@ -197,15 +197,15 @@ export const PocketPlayer = () => {
                     <div className="w-8 h-4 rounded-full bg-zinc-800 shadow-[inset_0_1px_3px_rgba(0,0,0,0.8)] relative cursor-pointer" onClick={() => play("switchOn")}>
                         <div className={`absolute top-[2px] left-[2px] w-3 h-3 rounded-full bg-zinc-400 shadow-md transition-all ${isPlaying ? 'translate-x-4 bg-orange-500' : ''}`}></div>
                     </div>
-                    <span className="text-[9px] font-mono text-gray-500 self-center">SHUFFLE</span>
+                    <span className="text-[9px] font-mono text-gray-500 self-center">{"SHUFFLE"}</span>
                 </div>
 
                 <div className="flex gap-2">
                     <div className="w-4 h-4 rounded bg-zinc-700 shadow-skeuo-raised flex items-center justify-center active:bg-orange-500 cursor-pointer" onClick={() => play("click")}>
-                        <span className="text-[8px] text-white">EQ</span>
+                        <span className="text-[8px] text-white">{"EQ"}</span>
                     </div>
                     <div className="w-4 h-4 rounded bg-zinc-700 shadow-skeuo-raised flex items-center justify-center active:bg-orange-500 cursor-pointer" onClick={() => play("click")}>
-                        <span className="text-[8px] text-white">PL</span>
+                        <span className="text-[8px] text-white">{"PL"}</span>
                     </div>
                 </div>
             </div>
